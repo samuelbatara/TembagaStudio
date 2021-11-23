@@ -67,8 +67,8 @@
   <div class="container" style="padding: 2.5% 0 2.5% 0">
     <div class="row d-flex justify-content-center">
       <div class="col-lg-12 text order-1 order-lg-1 text-center">
-        <h1 class = "fw-bold" style="font-family: 'Roboto'; font-size: 62px; color: #C5AC58;">Paket</h1>
-        <h5 style="font-weight: bold; font-size: 30px; color: #C4C4C4;">Sewa Studio Musik</h5>
+        <h1 class = "fw-bold" style="font-family: 'Roboto'; font-size: 52px; color: #C5AC58;">Paket</h1>
+        <h5 style="font-weight: bold; font-size: 20px; color: #C4C4C4;">Sewa Studio Musik</h5>
         <div class="row row-cols-auto justify-content-around">
           <style>
             ul {
@@ -85,7 +85,7 @@
             <div class="card-body" style="margin: 20px 0 20px 0;">
               <p class="fs-2" style="margin:0; color: white; font-weight: 500;">Pelajar</p>
               <p style="font-size:22pt; margin: 0; color:#C5AC58;">
-                <b>Rp<span style="font-size:44pt">50.000</span></b>
+                <b>Rp<span style="font-size:34pt">50.000</span></b>
               </p>
               <p>Per grup (maksimal 5 orang)<br>Tarif per jam</p>
               <a class="btn btn-lg d-grid gap-2" style="padding:3px 0 3px 0; background-color: #C5AC58; color: white; font-weight: bold;" href="#" role="button">Sewa</a>
@@ -104,7 +104,7 @@
             <div class="card-body" style="margin: 20px 0 20px 0;">
               <p class="fs-2" style="margin:0; color: white; font-weight: 500;">Reguler</p>
               <p style="font-size:22pt; margin: 0; color:#C5AC58;">
-                <b>Rp<span style="font-size:44pt">80.000</span></b>
+                <b>Rp<span style="font-size:34pt">80.000</span></b>
               </p>
               <p>Per grup (maksimal 5 orang)<br>Tarif per jam</p>
               <a class="btn btn-lg d-grid gap-2" style="padding:3px 0 3px 0; background-color: #C5AC58; color: white; font-weight: bold;" href="#" role="button">Sewa</a>
@@ -123,7 +123,7 @@
             <div class="card-body" style="margin: 20px 0 20px 0;">
               <p class="fs-2" style="margin:0; color: white; font-weight: 500;">Profesional</p>
               <p style="font-size:22pt; margin: 0; color:#C5AC58;">
-                <b>Rp<span style="font-size:44pt">120.000</span></b>
+                <b>Rp<span style="font-size:34pt">120.000</span></b>
               </p>
               <p>Per grup (maksimal 5 orang)<br>Tarif per jam</p>
               <a class="btn btn-lg d-grid gap-2" style="padding:3px 0 3px 0; background-color: #C5AC58; color: white; font-weight: bold;" href="#" role="button">Sewa</a>
@@ -147,14 +147,14 @@
   </div>
 </div>
 
-<div class="bg" style="background-image: url('/img/Studio3.jpg'); background-size: cover; height:90%; align-self: center;">
+<div class="bg" style="background-image: url('/img/Studio3.jpg'); background-size: cover; height:100%; align-self: center;">
   <div class="container" style="padding-top: 2.5%">
     <div class="row d-flex">
       <div class="col-lg-12 text order-1 order-lg-1" style="align-content: flex-start;">
-        <h1 class="fw-bold text-center" style="font-family: 'Roboto'; font-size: 62px; color: #C5AC58;">FAQs</h1>
-        <h5 class="text-center" style="font-weight: bold; font-style: italic; font-size: 30px; color: #C4C4C4;">Frequently Asked Question</h5>
+        <h1 class="fw-bold text-center" style="font-family: 'Roboto'; font-size: 52px; color: #C5AC58;"><b>FAQs</b></h1>
+        <h5 class="text-center" style="font-weight: bold; font-style: italic; font-size: 20px; color: #C4C4C4;">Frequently Asked Question</h5>
         <div style="margin: 5% 5% 0 5%">
-          <h3 style="margin: 20px% 0 20px 0; color: #C5AC58"><b>Perubahan & Pembatalan Tanggal </b></h3>
+          <h4 style="margin: 20px% 0 20px 0; color: #C5AC58"><b>Perubahan & Pembatalan Tanggal </b></h4>
           <p style="color: #FFFFFF">Perubahan tanggal hanya bisa dilakukan 1 kali dengan konfirmasi terlebih dahulu kepada pihak studio, selambatnya 45 hari sebelum tanggal acara, 
             dan hanya jika jadwal yang diinginkan masih kosong.  Perubahan tanggal juga bisa dilakukan apabila terjadi keadaan darurat seperti bencana alam maupun kejadian di luar kendali manusia.
           </p>
@@ -162,7 +162,7 @@
           <div class="line col-lg-6" style="width: 546px; height: 1px; background-color:#C5AC58"></div>
           <br>
 
-          <h3 style="margin: 20px% 0 20px 0; color: #C5AC58"><b>Batasan Sewa </b></h3>
+          <h4 style="margin: 20px% 0 20px 0; color: #C5AC58"><b>Batasan Sewa </b></h4>
           <p style="color: #FFFFFF">Tarif sewa mencakup fasilitas standar tiap ruang.  Penggunaan fasilitas tambahan dikenakan biaya secara terpisah. Penggunaan ruang (berikut listrik, AC, 
             serta sistem tata cahaya dan suara) dalam kurun waktu H-1 dan H+1 dikenakan biaya tambahan.
           </p>
@@ -179,8 +179,5 @@
     </div>
   </div>
 </div>
-<footer class="text-center" style="background-color: #14171A; color: #C4C4C4; height: 50px;">
-    <p style="padding-top: 10px">Copyright © Tembaga Studio 2021</p>
-</footer>
 
 @endsection

@@ -9,4 +9,7 @@
         @include('/partials/navbar')
         @yield('content')
     </body>
+    <footer class="text-center" style="background-color: #14171A; color: #C4C4C4; height: 50px;">
+        <p style="padding-top: 10px">Copyright © Tembaga Studio 2021</p>
+    </footer>
 </html> 
