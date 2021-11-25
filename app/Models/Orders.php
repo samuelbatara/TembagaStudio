@@ -14,4 +14,14 @@ class Orders extends Model
      * @var string
      */
     protected $table = 'orders';
+    protected $primaryKey = "order_id";
+    protected $fillable = [
+        'name',
+        'phone',
+        'email',
+        'time',
+        'studio_id',
+        'duration',
+        'status',
+    ];
 }
