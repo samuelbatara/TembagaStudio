@@ -9,7 +9,7 @@
           <a class="nav-link" aria-current="page" href="/">Beranda</a>
           <a class="nav-link" href="/layanan">Layanan</a>
           <a class="nav-link" href="#">Sewa</a>
-          <a class="nav-link" href="#" tabindex="-1"><img class = "img-fluid" style="height: 30px; " src="img/profile.png"></a>
+          <a class="nav-link" href="{{ route('admin.dashboard') }}" tabindex="-1"><img class = "img-fluid" style="height: 30px; " src="img/profile.png"></a>
         </div>
       </div>
     </div>
