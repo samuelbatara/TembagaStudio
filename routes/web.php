@@ -18,6 +18,9 @@ Route::get('/', function () {
     return view('/welcome');
 });
 
+Route::get('/layanan', function () {
+    return view('/layanan');
+}); 
 
 // Routes untuk Dashboard dan Orders pada Halaman Admin
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.dashboard');
