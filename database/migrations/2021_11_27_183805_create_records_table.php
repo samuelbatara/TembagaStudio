@@ -14,10 +14,12 @@ class CreateRecordsTable extends Migration
     public function up()
     {
         Schema::create('records', function (Blueprint $table) {
-            $table->unsignedBigInteger("admin_id");
-            $table->foreign("admin_id")->references("admin_id")->on("admin");
-            $table->string("order_id", 20);
-            $table->foreign("order_id")->references("order_id")->on("orders");
+            $table->string('order_id', 50);
+            $table->integer('admin_id');
+            $table->primary(array('order_id', 'admin_id'));
+            $table->string('description');
+            $table->foreign('order_id')->references('order_id')->on('orders');
+            $table->foreign('admin_id')->references('admin_id')->on('admins');
         });
     }
 

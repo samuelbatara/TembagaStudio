@@ -14,17 +14,17 @@ class CreateOrdersTable extends Migration
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->string("order_id", 20);
-            $table->primary(["order_id"]);
-            $table->string("name",30);
-            $table->string("phone",20);
-            $table->string("email",50);
-            $table->dateTime("time");
-            $table->unsignedBigInteger("studio_id");
-            $table->integer("duration");
-            $table->string("status", 50);
-            $table->foreign("studio_id")->references("studio_id")->on("studios");
+            $table->string('order_id', 50);
+            $table->primary('order_id');
+            $table->string('name', 50);
+            $table->string('phone', 20);
+            $table->string('email', 50);
+            $table->timestamp('time')->useCurrent();
+            $table->integer('packet_id');
+            $table->decimal('duration',2,0);
+            $table->string('status',15);
             $table->timestamps();
+            $table->foreign('packet_id')->references('packet_id')->on('packets');
         });
     }
 

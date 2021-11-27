@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStudiosTable extends Migration
+class CreatePacketsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateStudiosTable extends Migration
      */
     public function up()
     {
-        Schema::create('studios', function (Blueprint $table) {
-            $table->id("studio_id");
-            $table->string("name",20);
-            $table->integer("price");
-            
+        Schema::create('packets', function (Blueprint $table) {
+            $table->integer('packet_id',1);
+            $table->string('name', 20);
+            $table->decimal('price',6);
         });
     }
 
@@ -28,6 +27,6 @@ class CreateStudiosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('studios');
+        Schema::dropIfExists('packets');
     }
 }

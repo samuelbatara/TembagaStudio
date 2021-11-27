@@ -14,14 +14,14 @@ class CreatePaymentsTable extends Migration
     public function up()
     {
         Schema::create('payments', function (Blueprint $table) {
-            $table->id("payment_id");
-            $table->string("order_id", 20);
-            $table->string("status_code", 50);
-            $table->integer("amount");
-            $table->dateTime("time");
-            $table->foreign("status_code")->references("status_code")->on("status");
-            $table->foreign("order_id")->references("order_id")->on("orders");
+            $table->integer('payment_id',1);  
+            $table->string('order_id', 50);
+            $table->decimal('status_code',3,0);
+            $table->decimal('amount',6,0);
+            $table->timestamp('time');
             $table->timestamps();
+            $table->foreign('order_id')->references('order_id')->on('orders');
+            $table->foreign('status_code')->references('status_code')->on('status');
         });
     }
 
