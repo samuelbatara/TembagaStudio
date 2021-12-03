@@ -3,21 +3,19 @@
 @section('content')
 
 {{-- Homepage Layanan Sewa --}}
-<div class="bg" style="background-image: url('/img/Layanan.png'); background-size: cover; height:100%; align-self: center; margin-top:55px">
+  <div class="bg" style="background-image: url('/img/Layanan.png'); background-size: cover; height:100%; align-self: center; margin-top:55px">
     <div class="container position-absolute top-50 start-50 translate-middle">
-    <div class="container" style="padding-top: 2.5%">
+      <div class="container" style="padding-top: 2.5%">
         <div class="row d-flex">
           <div class="col-lg-5 text order-1 order-lg-1" style="align-content: flex-start;">
             <h4 style="color: #F0F0F0; font-size: 38px"> <b>Detail</b></h4>
             <h2 class="col-lg-12" style="color: #C5AC58; font-size: 85px"><b>Layanan Sewa</b></h2>
           </div>
         </div>
-    </div>
+      </div>
     </div>
   </div>
 
-
-  
   <div class="bg" style="background-color: #14171A">
     <div class="container" style="padding: 2.5% 0 2.5% 0">
       <div class="row d-flex justify-content-center">
@@ -219,6 +217,6 @@
             </tr>
         </table>
     </div>
-</div>
+  </div>
   
 @endsection
