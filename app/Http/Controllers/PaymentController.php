@@ -157,11 +157,7 @@ class PaymentController extends Controller
         if($signature_key != $notif->signature_key) {
             // Mungkin ada laporan transaksi ilegal ke pemilik studio
             exit(0);
-        }
-
-        $file = fopen('sk.txt', 'w');
-        fwrite($file, $status_code);
-        fclose($file);
+        } 
  
         // Transaksi akan diproses 
         if(strcmp($status_code, "200") == 0) { // Transaksi pembayaran
