@@ -16,7 +16,7 @@ class CreatePacketsTable extends Migration
         Schema::create('packets', function (Blueprint $table) {
             $table->integer('packet_id',1);
             $table->string('name', 20);
-            $table->decimal('price',6);
+            $table->decimal('price',9);
         });
     }
 

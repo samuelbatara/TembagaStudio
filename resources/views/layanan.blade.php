@@ -40,7 +40,12 @@
                   <b>Rp<span style="font-size:44pt">50.000</span></b>
                 </p>
                 <p>Per grup (maksimal 5 orang)<br>Tarif per jam</p>
-                <a class="btn btn-lg d-grid gap-2" style="padding:3px 0 3px 0; background-color: #C5AC58; color: white; font-weight: bold;" href="#" role="button">Sewa</a>
+                <form action="/sewa1" method="get">
+                  <input type="hidden" name="paket" value="1">
+                  <div class="d-grid gap-2">
+                    <button type="submit" name="submit" class="btn" style="padding:3px 0 3px 0; background-color: #C5AC58; color: white; font-weight: bold; font-size: 20px;">Sewa</button>
+                  </div>
+                </form>
                 <div class="text-start" >
                   <ul class="list-group">
                     <li style="color: white;">Alat Musik Lengkap</li>
@@ -60,7 +65,12 @@
                   <b>Rp<span style="font-size:44pt">80.000</span></b>
                 </p>
                 <p>Per grup (maksimal 5 orang)<br>Tarif per jam</p>
-                <a class="btn btn-lg d-grid gap-2" style="padding:3px 0 3px 0; background-color: #C5AC58; color: white; font-weight: bold;" href="#" role="button">Sewa</a>
+                <form action="/sewa1" method="get">
+                  <input type="hidden" name="paket" value="2">
+                  <div class="d-grid gap-2">
+                    <button type="submit" name="submit" class="btn" style="padding:3px 0 3px 0; background-color: #C5AC58; color: white; font-weight: bold; font-size: 20px;">Sewa</button>
+                  </div>
+                </form>
                 <div class="text-start" >
                   <ul class="list-group">
                     <li style="color: white;">Semua Fasilitas Paket Pelajar</li>
@@ -79,7 +89,12 @@
                   <b>Rp<span style="font-size:44pt">120.000</span></b>
                 </p>
                 <p>Per grup (maksimal 5 orang)<br>Tarif per jam</p>
-                <a class="btn btn-lg d-grid gap-2" style="padding:3px 0 3px 0; background-color: #C5AC58; color: white; font-weight: bold;" href="#" role="button">Sewa</a>
+                <form action="/sewa1" method="get">
+                  <input type="hidden" name="paket" value="3">
+                  <div class="d-grid gap-2">
+                    <button type="submit" name="submit" class="btn" style="padding:3px 0 3px 0; background-color: #C5AC58; color: white; font-weight: bold; font-size: 20px;">Sewa</button>
+                  </div>
+                </form>
                 <div class="text-start" >
                   <ul class="list-group">
                     <li style="color: white;">Semua fasilitas Paket Reguler</li>

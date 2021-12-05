@@ -14,21 +14,23 @@
         <div style="background-color: white; border-radius: 20px">
           <div style="padding: 5% 10%">
             <h5 class="text-center">Pilih Tanggal & Waktu Sewa</h5>
-
-            <div class="form-group" style="margin-bottom: 20px">
-              <label for="tanggalsewa" style="font-weight: bold">Tanggal</label>
-              <input type="date" class="form-control" name="tanggalsewa" id="tanggalsewa"> 
-            </div>
-
-            <div class="form-group" style="margin-bottom: 20px">
-              <label for="waktusewa" style="font-weight: bold">Waktu</label>
-              <input type="time" class="form-control" name="waktusewa" id="waktusewa"> 
-            </div>
-
-            <div style="padding: 10px 0">
-              <a class="btn d-grid" style="padding:3px 0;  background-color: #C5AC58; color: white; font-weight: bold;" href="/sewa3" role="button">Lanjut</a>
-            </div>
-            
+            <form action="/sewa3" method="get">
+              <div class="form-group" style="margin-bottom: 20px">
+                <label for="tanggalsewa" style="font-weight: bold">Tanggal</label>
+                <input type="date" class="form-control" name="tanggalsewa" id="tanggalsewa"> 
+              </div>
+  
+              <div class="form-group" style="margin-bottom: 20px">
+                <label for="waktusewa" style="font-weight: bold">Waktu</label>
+                <input type="time" class="form-control" name="waktusewa" id="waktusewa"> 
+              </div>
+  
+              <div class="d-grid gap-2">
+                <button class="btn" type="submit" name="submit" style="padding:3px 0;  background-color: #C5AC58; color: white; font-weight: bold;">
+                  Lanjut
+                </button> 
+              </div>
+            </form>             
           </div>
         </div>
       </div>

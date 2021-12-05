@@ -1,11 +1,28 @@
 @extends('layouts.app')
 
 @section('content')
+
 <!-- Home -->
 <!-- Prosedur Pinjam -->
 <div class="bg" style="background-image: url('/img/Drum.png'); background-size: cover; height:100%; align-self: center;">
   <div class="container position-absolute top-50 start-50 translate-middle">
     <div class="row d-flex justify-content-center">
+      
+    @if ($message = Session::get('info'))
+      <div class="alert alert-secondary" role="alert">
+        {{ $message }}
+      </div>
+    @endif
+    @if ($message = Session::get('success'))
+      <div class="alert alert-secondary" role="alert">
+        {{ $message }}
+      </div>
+    @endif
+    @if ($message = Session::get('error'))
+      <div class="alert alert-secondary" role="alert">
+        {{ $message }}
+      </div>
+    @endif
       <div class="col-lg-10 text order-2 order-lg-1 text-center">
         <h1 class = "fw-bold" style="font-family: 'Roboto'; font-size: 78px; color: #C5AC58">Tembaga Studio</h1>
         <h5 style="font-weight: bold; font-size: 40px; color: #FFFFFF">Music, Rental Sound System, & Recording</h5>
@@ -88,7 +105,12 @@
                 <b>Rp<span style="font-size:34pt">50.000</span></b>
               </p>
               <p>Per grup (maksimal 5 orang)<br>Tarif per jam</p>
-              <a class="btn btn-lg d-grid gap-2" style="padding:3px 0 3px 0; background-color: #C5AC58; color: white; font-weight: bold;" href="#" role="button">Sewa</a>
+              <form action="/sewa1" method="get">
+                <input type="hidden" name="paket" value="1">
+                <div class="d-grid gap-2">
+                  <button type="submit" name="submit" class="btn" style="padding:3px 0 3px 0; background-color: #C5AC58; color: white; font-weight: bold; font-size: 20px;">Sewa</button>
+                </div>
+              </form>
               <div class="text-start" >
                 <ul class="list-group">
                   <li >Amply Gitar Marshall JCM 2000</li>
@@ -107,7 +129,12 @@
                 <b>Rp<span style="font-size:34pt">80.000</span></b>
               </p>
               <p>Per grup (maksimal 5 orang)<br>Tarif per jam</p>
-              <a class="btn btn-lg d-grid gap-2" style="padding:3px 0 3px 0; background-color: #C5AC58; color: white; font-weight: bold;" href="#" role="button">Sewa</a>
+              <form action="/sewa1" method="get">
+                <input type="hidden" name="paket" value="2">
+                <div class="d-grid gap-2">
+                  <button type="submit" name="submit" class="btn" style="padding:3px 0 3px 0; background-color: #C5AC58; color: white; font-weight: bold; font-size: 20px;">Sewa</button>
+                </div>
+              </form> 
               <div class="text-start" >
                 <ul class="list-group">
                   <li style="color: white;">Semua fasilitas Paket Pelajar</li>
@@ -126,7 +153,12 @@
                 <b>Rp<span style="font-size:34pt">120.000</span></b>
               </p>
               <p>Per grup (maksimal 5 orang)<br>Tarif per jam</p>
-              <a class="btn btn-lg d-grid gap-2" style="padding:3px 0 3px 0; background-color: #C5AC58; color: white; font-weight: bold;" href="#" role="button">Sewa</a>
+              <form action="/sewa1" method="get">
+                <input type="hidden" name="paket" value="3">
+                <div class="d-grid gap-2">
+                  <button type="submit" name="submit" class="btn" style="padding:3px 0 3px 0; background-color: #C5AC58; color: white; font-weight: bold; font-size: 20px;">Sewa</button>
+                </div>
+              </form>
               <div class="text-start" >
                 <ul class="list-group">
                   <li style="color: white;">Semua fasilitas Paket Reguler</li>

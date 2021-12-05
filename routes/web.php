@@ -12,28 +12,32 @@ use App\Http\Controllers\AdminController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
-Route::get('/', function () {
-    return view('/welcome');
-});
-
+ 
 Route::get('/layanan', function () {
     return view('/layanan');
 }); 
 
-Route::get('/sewa1', function () {
-    return view('/sewa1');
-}); 
+// Route::get('/sewa1', function () {
+//     return view('/sewa1');
+// }); 
 
-Route::get('/sewa2', function () {
-    return view('/sewa2');
-}); 
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
 
-Route::get('/sewa3', function () {
-    return view('/sewa3');
-}); 
+Route::get('/sewa1', [\App\Http\Controllers\PaymentController::class, 'index']);
 
+Route::get('/sewa2', [\App\Http\Controllers\PaymentController::class, 'formTanggalWaktu']); 
+
+Route::get('/sewa3', [\App\Http\Controllers\PaymentController::class, 'formIdentitas']); 
+
+Route::get('/konfirmasi', [\App\Http\Controllers\PaymentController::class, 'konfirmasi']);
+
+Route::get('/finish', [\App\Http\Controllers\HomeController::class, 'finish']);
+
+Route::get('/unfinish', [\App\Http\Controllers\HomeController::class, 'unfinish']);
+
+Route::get('/batal', [\App\Http\Controllers\PaymentController::class, 'batal']);
+
+Route::get('/error', [\App\Http\Controllers\HomeController::class, 'error']);
 // Routes untuk Dashboard dan Orders pada Halaman Admin
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.dashboard');
 
