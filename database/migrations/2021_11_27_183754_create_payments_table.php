@@ -17,7 +17,7 @@ class CreatePaymentsTable extends Migration
             $table->integer('payment_id',1);  
             $table->string('order_id', 50);
             $table->decimal('status_code',3,0);
-            $table->decimal('amount',6,0);
+            $table->decimal('amount',9,0);
             $table->timestamp('time');
             $table->timestamps();
             $table->foreign('order_id')->references('order_id')->on('orders');

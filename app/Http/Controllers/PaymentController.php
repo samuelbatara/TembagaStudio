@@ -103,8 +103,8 @@ class PaymentController extends Controller
 
         $batas_pembayaran = array(
             'start_time' => date('Y-m-d H:i:s +0700'),
-            'duration' => 20,
-            'unit' => "second",
+            'duration' => 1,
+            'unit' => "day",
         );
 
         $params = array(
@@ -182,9 +182,10 @@ class PaymentController extends Controller
                 'status' => 'Expired',
             ]);
         } else if(strcmp($status_code, "202") == 0) { // Transaksi Denied
-            \App\Models\Order::where('order_id', $order_id)->update([
-                'status' => 'Denied',
-            ]);
+            // BELUM MENERIMA REFUND
+            // \App\Models\Order::where('order_id', $order_id)->update([
+            //     'status' => 'Denied',
+            // ]);
         }
     }
 
