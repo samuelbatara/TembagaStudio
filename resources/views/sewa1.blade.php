@@ -2,8 +2,7 @@
 
 @section('content')
 <!-- Home -->
-<!-- Prosedur Pinjam -->
-
+<!-- Prosedur Pinjam --> 
 <div class="bg" style="background-color: #14171A">
   <div class="container" style="padding: 10% 0% 5% 0%; height: 100%">
     <div class="row d-flex">

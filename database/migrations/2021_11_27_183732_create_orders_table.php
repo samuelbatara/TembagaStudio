@@ -19,7 +19,7 @@ class CreateOrdersTable extends Migration
             $table->string('name', 50);
             $table->string('phone', 20);
             $table->string('email', 50);
-            $table->timestamp('time')->useCurrent();
+            $table->timestamp('time');
             $table->integer('packet_id');
             $table->decimal('duration',2,0);
             $table->string('status',15);

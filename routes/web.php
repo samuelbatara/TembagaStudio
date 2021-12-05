@@ -23,21 +23,21 @@ Route::get('/layanan', function () {
 
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
 
+// Proses penyewaan
 Route::get('/sewa1', [\App\Http\Controllers\PaymentController::class, 'index']);
-
 Route::get('/sewa2', [\App\Http\Controllers\PaymentController::class, 'formTanggalWaktu']); 
-
 Route::get('/sewa3', [\App\Http\Controllers\PaymentController::class, 'formIdentitas']); 
-
 Route::get('/konfirmasi', [\App\Http\Controllers\PaymentController::class, 'konfirmasi']);
 
+
+// Notifikasi dari Midtrans (Don't touch)
+Route::post('/notification', [App\Http\Controllers\PaymentController::class, 'notification']);
 Route::get('/finish', [\App\Http\Controllers\HomeController::class, 'finish']);
-
 Route::get('/unfinish', [\App\Http\Controllers\HomeController::class, 'unfinish']);
-
 Route::get('/batal', [\App\Http\Controllers\PaymentController::class, 'batal']);
-
 Route::get('/error', [\App\Http\Controllers\HomeController::class, 'error']);
+
+
 // Routes untuk Dashboard dan Orders pada Halaman Admin
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.dashboard');
 
