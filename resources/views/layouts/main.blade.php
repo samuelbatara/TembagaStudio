@@ -77,7 +77,7 @@
         <!-- Divider -->
         <hr class="sidebar-divider">
         <li class="nav-item">
-            <a class="nav-link" href="/">
+            <a class="nav-link" href="{{ route('logout') }}">
                 <i class="fas fa-fw fa-user"></i>
                 <span>Logout</span>
             </a>
@@ -135,7 +135,7 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-link" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-danger" href="" >Logout</a>
+                <a class="btn btn-danger" href="{{ route('logout') }}" >Logout</a>
                 <form id="logout-form" action="" method="POST" style="display: none;">
                     @csrf
                 </form>

@@ -7,7 +7,7 @@
     <div class="nav-item text-nowrap">
       <li class="nav-item px-3">
         @csrf
-          <a href="{{ route('admin.logout') }}" class="nav-link text-sm text-gray-700 dark:text-gray-500 underline">Sign Out</a>
+          <a href="{{ route('logout') }}" class="nav-link text-sm text-gray-700 dark:text-gray-500 underline">Sign Out</a>
       </li>    
     </div>
   </div>

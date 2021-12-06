@@ -56,7 +56,7 @@ Route::group(['middleware'=>'revalidate'], function() {
     // Login untuk admin
     Route::get('/login', [\App\Http\Controllers\LoginController::class, 'formLogin'])->name('login');
     Route::post('/login', [\App\Http\Controllers\LoginController::class, 'login'])->name('login');
-    Route::get('/logout', [\App\Http\Controllers\LoginController::class, 'logout'])->name('admin.logout');
+    Route::get('/logout', [\App\Http\Controllers\LoginController::class, 'logout'])->name('logout');
 });
 
 // Notifikasi dari Midtrans (Don't touch)
