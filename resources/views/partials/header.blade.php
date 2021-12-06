@@ -6,7 +6,8 @@
   <div class="navbar-nav">
     <div class="nav-item text-nowrap">
       <li class="nav-item px-3">
-          <a href="/" class="nav-link text-sm text-gray-700 dark:text-gray-500 underline">Sign Out</a>
+        @csrf
+          <a href="{{ route('admin.logout') }}" class="nav-link text-sm text-gray-700 dark:text-gray-500 underline">Sign Out</a>
       </li>    
     </div>
   </div>

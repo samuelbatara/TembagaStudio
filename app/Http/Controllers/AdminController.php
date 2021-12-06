@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\DB;
 // Class untuk Admin
 class AdminController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
     // Method Untuk Pemanggilan Halaman Dashboard
     public function index(Request $request)
     {
