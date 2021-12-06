@@ -61,7 +61,6 @@
                                                     @endforeach
                                                 </select>
                                             </div>
-                                            </div>
                                             <div class="form-group">
                                                 <label for="duration">Durasi</label>
                                                 <input type="number" id="duration" class="form-control"
@@ -79,6 +78,8 @@
                                                     <a href="/orders" class="btn btn secondary">Cancel</a>
                                                 </div>
                                             </div>
+                                            </div>
+                                            
                                         </form>
                                         @endforeach
                                     </div>
