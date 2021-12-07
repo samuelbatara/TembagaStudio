@@ -7,14 +7,23 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use \App\Http\Controllers\OrdersController;
 use App\Models\Payment;
-use Symfony\Contracts\Service\Attribute\Required;
+
+use function PHPSTORM_META\map;
 
 // Class untuk Admin
 class AdminController extends Controller
 {
     
     public function __construct()
-    {
+    {   // Set your Merchant Server Key
+        \Midtrans\Config::$serverKey = env("SERVER_KEY_MIDTRANS");
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        \Midtrans\Config::$isProduction = false;
+        // Set sanitization on (default)
+        \Midtrans\Config::$isSanitized = true;
+        // Set 3DS transaction for credit card to true
+        \Midtrans\Config::$is3ds = true;
+
         $this->middleware('auth:admin');
         date_default_timezone_set('Asia/Jakarta');
     }
@@ -62,6 +71,11 @@ class AdminController extends Controller
 
     }
 
+    public function cancelOrder($order_id) {
+        $cancel = \Midtrans\Transaction::cancel($order_id);
+        return $this->orders();
+    }
+
     // Method Untuk Pemanggilan Halaman Orders
     public function orders()
     {
@@ -78,11 +92,27 @@ class AdminController extends Controller
     }
 
     public function infoOrder($order_id) {
+
+        $T = \Midtrans\Transaction::status($order_id);
+        $data = [];
+        foreach($T as $key => $value) {
+            $data[$key] = $value;
+        }  
         $orders = new OrdersController(); 
+        $order = $orders->getIf($order_id)[0];
+        $packet = Packet::find($order->packet_id);
+        $payment = Payment::firstWhere('order_id', $order_id); 
+        $jlh_orang = ($data['gross_amount'] - $order->duration * $packet->price) / 30000; 
+        $store = ($data['store']=='indomaret')? 'Indomaret' : 'Alfamaret';
         return view('admin.infoOrder', [
             'title'=>'Tembaga Studio - Detail Order',
-            'packets' => Packet::all(),
-            'order' => $orders->getIf($order_id)[0],
+            'packet' => $packet,
+            'order' => $order,
+            'payment' => $payment,
+            'amount' => $data['gross_amount'],
+            'jlh_orang' => $jlh_orang,
+            'payment_code' => $data['payment_code'],
+            'store' => $store,
         ]);
     }
 
@@ -315,6 +345,7 @@ class AdminController extends Controller
         Packet::where('packet_id', $n)->delete();
         return redirect('/packets')->with('error', 'Paket has been removed');
     }
+    
     public function logout(){
         return redirect(route('/'));
     }

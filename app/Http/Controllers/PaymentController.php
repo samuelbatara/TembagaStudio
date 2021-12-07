@@ -51,7 +51,7 @@ class PaymentController extends Controller
         // $date = date_create($request->tanggalsewa.' '.$request->waktusewa);
         // dd(date_format($date, 'Y/m/d H:i:s'));
         $harga = \App\Models\Packet::firstWhere('packet_id', $_SESSION['order']['paket'])->price;
-        $total = $harga * $_SESSION['order']['durasi'] + max(0, $_SESSION['order']['jlh_orang'] - PaymentController::CHARGE);
+        $total = $harga * $_SESSION['order']['durasi'] + max(0, $_SESSION['order']['jlh_orang'] - 5)* PaymentController::CHARGE;
         return view('sewa3', ['total' => $total,]);
     }
 
@@ -112,6 +112,7 @@ class PaymentController extends Controller
             'customer_details' => $customer_details,
             'item_details'=> $item_details,
             'expiry' => $batas_pembayaran,
+            'enabled_payments' => ['indomaret', 'alfamart'],
         );
         $order = $_SESSION['order']; 
         $res = $this->insertToOrders($order);
@@ -120,7 +121,7 @@ class PaymentController extends Controller
         }
         try {
             $payment_url = \Midtrans\Snap::createTransaction($params)->redirect_url;
-            header("Location: $payment_url");  
+            header("Location: $payment_url"); 
         } catch(Exception $e) {
             Order::find($order['order_id'])->delete();
             return redirect('sewa1')->with('exception', "Maaf, telah terjadi kesalahan. Silahkan coba lagi.");
@@ -138,7 +139,7 @@ class PaymentController extends Controller
         $order->time = date('Y-m-d H:i', strtotime($data['tanggal'].$data['waktu']));
         $order->packet_id = $data['paket'];
         $order->duration = $data['durasi'];
-        $order->status = "Pending";
+        $order->status = "Pending"; 
         return $order->save();
     }
 
@@ -158,7 +159,7 @@ class PaymentController extends Controller
             // Mungkin ada laporan transaksi ilegal ke pemilik studio
             exit(0);
         } 
- 
+
         // Transaksi akan diproses 
         if(strcmp($status_code, "200") == 0) { // Transaksi pembayaran
             $data = [
@@ -170,7 +171,7 @@ class PaymentController extends Controller
             $res = $this->insertToPayments($data);
             if($res) {
                 \App\Models\Order::where('order_id', $order_id)->update([
-                    'status' => 'Paid',
+                    'status' => $notif->transaction_status,
                 ]);
             }
         } else if(strcmp($status_code, "201") == 0) { // Transaksi pending 

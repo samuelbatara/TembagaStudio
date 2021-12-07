@@ -47,7 +47,7 @@
           <th scope="col">No</th>
           <th scope="col">Nama</th>
           <th scope="col">Nomor Tel.</th>
-          <th scope="col">Waktu</th>
+          <th scope="col">Waktu Pemakaian</th>
           <th scope="col">Paket</th>
           <th scope="col">Status</th>
           <th scope="col">Aksi</th>
@@ -62,20 +62,9 @@
           <td>{{ $order->phone }}</td>
           <td>{{ $order->time }}</td>
           <td>{{ $packets[$order->packet_id] }}</td>
-          @if (strcmp($order->status, 'Paid')==0) 
-            <td style="color: green; font-weight: bold">{{ $order->status }}</td>
-          @endif
-          @if (strcmp($order->status, 'Pending')==0) 
-            <td style="color: grey; font-weight: bold">{{ $order->status }}</td>
-          @endif
-          @if (strcmp($order->status, 'Denied')==0) 
-            <td style="color: red; font-weight: bold">{{ $order->status }}</td>
-          @endif
+          <td style="font-weight: bold">{{ ucfirst($order->status)}}</td>
           <td>
-            <a href="/orders/{{ $order->order_id }}" style="margin: 0 3px" class="btn btn-sm btn-outline-dark">Detail</a>
-            @if (strcmp($order->status, "Paid") != 0)
-              <a href="/orders/hapus/{{$order->order_id}}" style="margin: 0 3px" class="btn btn-sm btn-outline-danger">Delete</a>
-            @endif
+            <a href="/order/{{ $order->order_id }}" style="margin: 0 3px" class="btn btn-sm btn-outline-dark">Detail</a>
           </td>
         </tr>
         @endforeach

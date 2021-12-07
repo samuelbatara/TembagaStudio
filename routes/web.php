@@ -43,7 +43,9 @@ Route::group(['middleware'=>'revalidate'], function() {
         Route::get('/orders/hapus/{order_id}', [App\Http\Controllers\AdminController::class, 'deleteOrders'])->name('admin.deleteOrders');
         Route::get('/orders/editOrders/{order_id}', [App\Http\Controllers\AdminController::class, 'editOrders'])->name('admin.editOrders');
         Route::post('/orders/update', [App\Http\Controllers\AdminController::class, 'updateOrders'])->name('admin.updateOrders');
-        Route::get('/orders/{order_id}', [App\Http\Controllers\AdminController::class, 'infoOrder'])->name('admin.infoOrder');
+        Route::get('/order/{order_id}', [App\Http\Controllers\AdminController::class, 'infoOrder'])->name('admin.infoOrder'); 
+        Route::get('/cancel/{order_id}', [App\Http\Controllers\AdminController::class, 'cancelOrder'])->name('admin.cancel');
+        
         // Routes Order
         Route::get('/packets', [App\Http\Controllers\AdminController::class, 'packets'])->name('admin.packet');
         Route::get('/packets/addPackets', [App\Http\Controllers\AdminController::class, 'addPackets'])->name('admin.addPackets');
