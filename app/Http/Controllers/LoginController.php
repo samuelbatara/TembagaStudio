@@ -17,12 +17,12 @@ class LoginController extends Controller
         return view('login');
     }
 
-    public function login(Request $request) {
+    public function login(Request $request) { 
         // dd([$request->email, $request->password]);
         if(Auth::guard('admin')->attempt(['email'=>$request->email, "password" => $request->password])) {
             return redirect()->intended(route('admin.dashboard'));
         }
-        return redirect()->back()->withInput(['error'=>'Email atau Password salah!']);
+        return back()->with('error', 'Email atau Password salah!');
     }
 
     public function logout() {

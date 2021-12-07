@@ -46,11 +46,14 @@
                 }
             </style>
             <h4 style="color: #C5AC58; font-size: 38px"> <b>Login Admin</b></h4>
+            @if ($message = Session::get('error'))
+                <div style="color: rgb(136, 25, 25); font-weight: bold; padding: 3px 3px"> {{ $message }}</div>
+            @endif
             <form action="{{ route('login') }}" method="POST">
                 @csrf
                 <div class="form-group" style="margin-top: 30px">
                   <label for="inputUsername"><b>Email</b></label>
-                  <input type="text" class="form-control" id="email" name="email" placeholder="Admin">
+                  <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{ old('email') }}">
                 </div>
                 <div class="form-group">
                   <label for="inputPassword"><b>Password</b></label>
