@@ -4,7 +4,7 @@
 
 {{-- Homepage Layanan Sewa --}}
 
-<div class="bg" style="background-image: url('/img/Drum.png'); background-size: cover; height:100%; align-self: center;">
+<div class="bg" style="background-image: url('/img/Login.jpg'); background-size: cover; height:100%; align-self: center;">
     <div class="container position-absolute top-50 start-50 translate-middle">
     <div class="container" style="padding-top: 2.5%">
         <div class="row d-flex">

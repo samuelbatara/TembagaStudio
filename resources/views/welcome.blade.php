@@ -5,7 +5,7 @@
 <!-- Home -->
 <!-- Prosedur Pinjam -->
 <div class="bg" style="background-image: url('/img/Drum.png'); background-size: cover; height:100%; align-self: center;">
-  <div class="container position-absolute top-50 start-50 translate-middle">
+  <div class="container position-absolute top-50 start-50 translate-middle" id="content1">
     <div class="row d-flex justify-content-center">
       
     @if ($message = Session::get('info'))
@@ -27,14 +27,14 @@
         <h1 class = "fw-bold" style="font-family: 'Roboto'; font-size: 78px; color: #C5AC58">Tembaga Studio</h1>
         <h5 style="font-weight: bold; font-size: 40px; color: #FFFFFF">Music, Rental Sound System, & Recording</h5>
         <p class="text-center" style="color: #878787">Jl. Taman Candi Tembaga No.943, Kalipancur, Kec. Ngaliyan, Kota Semarang, Jawa Tengah 50183</p>
-        <a class="btn btn-lg" style="margin-top:40px; padding-left:40px; padding-right:40px; background-color: #C5AC58; color: #FFFFFF; font-weight: bold;" href="#" role="button">Mulai</a>
+        <a class="btn btn-lg" style="margin-top:40px; padding-left:40px; padding-right:40px; background-color: #C5AC58; color: #FFFFFF; font-weight: bold;" href="#content2" role="button">Mulai</a>
       </div>
     </div>
   </div>
 </div>
 
 <div class="bg" style="background-color: #14171A">
-  <div class="container" style="padding-top: 2.5%">
+  <div class="container" style="padding-top: 2.5%" id="content2">
     <div class="row d-flex">
       <div class="col-lg-6 text order-1 order-lg-1" style="align-content: flex-start">
         <h1 style="margin: 5% 0% 5% 0%; color: #C5AC58"><b>Tembaga Studio</b></h1>
@@ -74,7 +74,7 @@
         <h5 style="font-weight: bold; font-size: 30px; color: #C4C4C4;">Alat Studio Band</h5>
         <img src="/img/Logo.png" style="width: 900px; margin: 30px">
         <br/>
-        <a class="btn btn-lg" style="margin-top:40px; padding-left:40px; padding-right:40px; background-color: #C5AC58; color: #FFFFFF; font-weight: bold;" href="#" role="button">Selengkapnya</a>
+        <a class="btn btn-lg" style="margin-top:40px; padding-left:40px; padding-right:40px; background-color: #C5AC58; color: #FFFFFF; font-weight: bold;" href="https://bit.ly/pdfTembaga" role="button">Selengkapnya</a>
       </div>
     </div>
   </div>
