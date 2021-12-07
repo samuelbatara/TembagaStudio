@@ -34,7 +34,7 @@ class AdminController extends Controller
         $corder = DB::table('orders')->count();
         // Menghitung Jumlah Orders dengan status Not Paid
         $pending =  DB::table('orders')
-                    ->where('status', '=', 'Not Paid')
+                    ->where('status', '=', 'Pending')
                     ->count();
         // Menghitung Jumlah Orders dengan status Paid
         $paid =  DB::table('orders')
