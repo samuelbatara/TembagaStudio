@@ -38,10 +38,7 @@
     <ul style="background-color:#14171A" class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-            <div class="sidebar-brand-icon rotate-n-15">
-                <i class="fas fa-laugh-wink"></i>
-            </div>
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('admin.dashboard') }}">
             <div class="sidebar-brand-text mx-3">Tembaga Studio</div>
         </a>
 
@@ -51,7 +48,6 @@
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
             <a class="nav-link {{ $title==='Dashboard'? 'active' : '' }}" href="{{ route('admin.dashboard') }}">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
 
@@ -61,7 +57,6 @@
         <!-- Nav Item - About -->
         <li class="nav-item">
             <a class="nav-link {{ $title==='Orders'? 'active' : '' }}" href="{{ route('admin.orders') }}">
-                <i class="fas fa-fw fa-hands-helping"></i>
                 <span>Order</span>
             </a>
         </li>
@@ -69,22 +64,9 @@
         <!-- Nav Item - Profile -->
         <li class="nav-item ">
             <a class="nav-link {{ $title==='Packet'? 'active' : '' }}" href="{{ route('admin.packet') }}">
-                <i class="fas fa-fw fa-user"></i>
                 <span>Paket</span>
             </a>
         </li>
-
-        <!-- Divider -->
-        <hr class="sidebar-divider">
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('logout') }}">
-                <i class="fas fa-fw fa-user"></i>
-                <span>Logout</span>
-            </a>
-        </li>
-        <!-- Sidebar Toggler (Sidebar) -->
-        
-
     </ul>
     <!-- End of Sidebar -->
 
@@ -95,6 +77,27 @@
         <div id="content">
             <!-- Topbar -->
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow ">
+            <!-- Sidebar Toggle (Topbar) -->
+            <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                    <i class="fa fa-bars"></i>
+            </button>
+            <!-- Topbar Navbar -->
+            <ul class="navbar-nav ml-auto">
+                <!-- Nav Item - User Information -->
+                <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
+                            <figure class="img-profile rounded-circle avatar font-weight-bold" data-initial="{{ Auth::user()->name[0] }}"></figure>
+                        </a>
+                        <!-- Dropdown - User Information -->
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}" data-toggle="modal" data-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Logout
+                            </a>
+                        </div>
+                    </li>
+            </ul>
             </nav>
             <!-- End of Topbar -->
 
