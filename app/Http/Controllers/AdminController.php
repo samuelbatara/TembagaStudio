@@ -6,6 +6,7 @@ use App\Models\Packet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use \App\Http\Controllers\OrdersController;
+use App\Models\Payment;
 use Symfony\Contracts\Service\Attribute\Required;
 
 // Class untuk Admin
@@ -15,6 +16,7 @@ class AdminController extends Controller
     public function __construct()
     {
         $this->middleware('auth:admin');
+        date_default_timezone_set('Asia/Jakarta');
     }
 
     // Method Untuk Pemanggilan Halaman Dashboard
@@ -88,15 +90,18 @@ class AdminController extends Controller
     {
         return view("admin.addOrders", [
             "title" => "Tambah Orders",
-            "Paket" => Packet::pluck('name', 'packet_id'),
+            "Paket" => Packet::all(),
         ]);
+    }
+
+    public function getOrderId($data) {
+        $id = hash('md5', $data[0].$data[1].$data[2]);
+        return $id; 
     }
 
     public function storeOrders(Request $request)
     {
-        $pool = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
-        $string = substr(str_shuffle(str_repeat($pool, 5)), 0, 5);
+        $order_id = $this->getOrderId([$request->packet_id, $request->email, date('Y-m-d H:i:s +0700')]);
         
         $messages = [
             'required' => ':attribute wajib diisi ',
@@ -107,27 +112,74 @@ class AdminController extends Controller
         ];
 
         $this->validate($request,[
-            'name' => 'required|min:5|max:30',
-            'phone' => 'required|numeric',
-            'email' => 'required|email',
+            'name' => 'required',
+            'phone' => 'required',
+            'email' => 'required|email:rfc,dns',
             'time' => 'required',
             'packet_id' => 'required',
+            'jlh_orang' => 'required|min:1',
             'duration' => 'required|min:1',
             'status' => 'required',
         ],$messages);
-        
-        DB::table('orders')->insert([
-            'order_id' => $string,
-            'name' => $request->name,
-            'phone' => $request->phone,
-            'email' => $request->email,
-            'time' => $request->time,
-            'packet_id' => $request->packet_id,
-            'duration' => $request->duration,
-            'status' => $request->status,
-        ]);
+         
+        if(strcmp('none', $request->packet_id) == 0 && strcmp('none', $request->status) == 0) {
+            return back()->with([
+                'packet_id'=>'Pilih salah satu paket yang tersedia',
+                'status' => 'Pilih status pembayaran',
+            ]);
+        } else if(strcmp('none', $request->packet_id) == 0) {
+            return back()->with('packet_id', 'Pilih salah satu paket yang tersedia');
+        } else if(strcmp('none', $request->status) == 0) {
+            return back()->with('status', 'Pilih status pembayaran');
+        }
 
-        return redirect('/orders')->with('success', 'New Orders has been added');
+        // Cara Primitive
+        // DB::table('orders')->insert([
+        //     'order_id' => $order_id,
+        //     'name' => $request->name,
+        //     'phone' => $request->phone,
+        //     'email' => $request->email,
+        //     'time' => date('Y-m-d H:i', strtotime($request->time)),
+        //     'packet_id' => $request->packet_id,
+        //     'jlh_orang' => $request->jlh_orang,
+        //     'duration' => $request->duration,
+        //     'status' => $request->status,
+        // ]);
+
+        // Cara menyimpan dengan Eloquent 
+        $order = new Order();
+        $order->order_id = $order_id;
+        $order->name = $request->name;
+        $order->phone = $request->phone;
+        $order->email = $request->email;
+        $order->time = date('Y-m-d H:i', strtotime($request->time));
+        $order->packet_id = $request->packet_id;
+        //$order->jlh_orang = $request->jlh_orang;
+        $order->duration = $request->duration;
+        $order->status = $request->status;
+        if($order->save()) {
+            $price = (int)Packet::find($request->packet_id)->price; 
+            $durasi = (int)$request->duration;
+            $jlh_orang = (int)$request->jlh_orang;
+            // dd([$price, $durasi, $jlh_orang]);
+            $total = $durasi * $price + max(0, $jlh_orang - 5) * 30000;
+
+            if($this->storePayment([$order_id, $total])) {
+                return redirect('/orders')->with('success', 'New Orders has been added');
+            } else {
+                Order::where('order_id', $order_id)->delete();
+            }
+        }
+        return redirect('/orders')->with('error', 'Failed'); 
+    }
+
+    public function  storePayment($data) {
+        $payment = new Payment();
+        $payment->order_id = $data[0];
+        $payment->status_code = 200;
+        $payment->amount = $data[1];
+        $payment->time = date('Y-m-d H:i');
+        return $payment->save();
     }
 
     public function editOrders($order_id)

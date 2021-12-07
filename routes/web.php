@@ -38,8 +38,8 @@ Route::group(['middleware'=>'revalidate'], function() {
 
         // Routes Order
         Route::get('/orders', [App\Http\Controllers\AdminController::class, 'orders'])->name('admin.orders');
-        Route::get('/orders/addOrders', [App\Http\Controllers\AdminController::class, 'addOrders'])->name('admin.addOrders');
-        Route::post('/orders/addOrders/sukses', [App\Http\Controllers\AdminController::class, 'storeOrders'])->name('admin.storeOrders');
+        Route::get('/addOrders', [App\Http\Controllers\AdminController::class, 'addOrders'])->name('admin.addOrders');
+        Route::post('/addOrders', [App\Http\Controllers\AdminController::class, 'storeOrders'])->name('admin.storeOrders');
         Route::get('/orders/hapus/{order_id}', [App\Http\Controllers\AdminController::class, 'deleteOrders'])->name('admin.deleteOrders');
         Route::get('/orders/editOrders/{order_id}', [App\Http\Controllers\AdminController::class, 'editOrders'])->name('admin.editOrders');
         Route::post('/orders/update', [App\Http\Controllers\AdminController::class, 'updateOrders'])->name('admin.updateOrders');

@@ -18,7 +18,7 @@ class CreateOrdersTable extends Migration
             $table->primary('order_id');
             $table->string('name', 50);
             $table->string('phone', 20);
-            $table->string('email', 50);
+            $table->string('email', 50); 
             $table->timestamp('time');
             $table->integer('packet_id');
             $table->decimal('duration',2,0);
