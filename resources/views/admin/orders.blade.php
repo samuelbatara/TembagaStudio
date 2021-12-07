@@ -1,13 +1,13 @@
 @extends('layouts.main')
 
 @section('content')
-<script>document.title = "Orders - Tembaga Studio"</script>
+<script>document.title = "Daftar Order - Tembaga Studio"</script>
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Orders</h1> 
     <div class="btn-toolbar mb-2 mb-md-0">
       <div class="btn-group me-2">
-        <button type="button" class="btn btn-sm btn btn-outline-primary" onclick="location.href='/orders/addOrders'">Tambah Orders</button>
+        {{-- <button type="button" class="btn btn-sm btn btn-outline-primary" onclick="location.href='/orders/addOrders'">Tambah Orders</button> --}}
       </div>
     </div>
   </div>
@@ -46,7 +46,7 @@
         <tr>
           <th scope="col">No</th>
           <th scope="col">Nama</th>
-          <th scope="col">Nomor Telf.</th>
+          <th scope="col">Nomor Tel.</th>
           <th scope="col">Waktu</th>
           <th scope="col">Paket</th>
           <th scope="col">Status</th>
@@ -55,17 +55,27 @@
       </thead>
       <tbody>
         <?php $no = 0; ?>
-        @foreach ($allOrders as $order)
+        @foreach ($orders as $order) 
         <tr>
           <td>{{ ++$no; }}</td>
           <td>{{ $order->name }}</td>
           <td>{{ $order->phone }}</td>
           <td>{{ $order->time }}</td>
-          <td>{{ $order->packet_id }}</td>
-          <td>{{ $order->status }}</td>
+          <td>{{ $packets[$order->packet_id] }}</td>
+          @if (strcmp($order->status, 'Paid')==0) 
+            <td style="color: green; font-weight: bold">{{ $order->status }}</td>
+          @endif
+          @if (strcmp($order->status, 'Pending')==0) 
+            <td style="color: grey; font-weight: bold">{{ $order->status }}</td>
+          @endif
+          @if (strcmp($order->status, 'Denied')==0) 
+            <td style="color: red; font-weight: bold">{{ $order->status }}</td>
+          @endif
           <td>
-          <a href="/orders/editOrders/{{ $order->order_id }}" class="btn btn-sm btn-outline-dark">Edit</a>
-          <a href="/orders/hapus/{{$order->order_id}}" class="btn btn-sm btn-outline-danger">Delete</a>
+            <a href="/orders/{{ $order->order_id }}" style="margin: 0 3px" class="btn btn-sm btn-outline-dark">Detail</a>
+            @if (strcmp($order->status, "Paid") != 0)
+              <a href="/orders/hapus/{{$order->order_id}}" style="margin: 0 3px" class="btn btn-sm btn-outline-danger">Delete</a>
+            @endif
           </td>
         </tr>
         @endforeach

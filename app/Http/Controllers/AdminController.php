@@ -5,10 +5,13 @@ use App\Models\Order;
 use App\Models\Packet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use \App\Http\Controllers\OrdersController;
+use Symfony\Contracts\Service\Attribute\Required;
+
 // Class untuk Admin
 class AdminController extends Controller
 {
-
+    
     public function __construct()
     {
         $this->middleware('auth:admin');
@@ -60,11 +63,24 @@ class AdminController extends Controller
     // Method Untuk Pemanggilan Halaman Orders
     public function orders()
     {
+        $packets = array();
+        foreach(Packet::all() as $item) {
+            $packets[$item->packet_id] = $item->name;
+        } 
+        $orders = new OrdersController(); 
         return view('admin.orders',[
-            "title" => "Orders",
-            "nama" => "Admin",
-            "allOrders" => Order::all(),
-            "Paket" => Packet::pluck('name', 'packet_id'),
+            "title" => "Orders", 
+            "orders" => $orders->all(),
+            "packets" => $packets,
+        ]);
+    }
+
+    public function infoOrder($order_id) {
+        $orders = new OrdersController(); 
+        return view('admin.infoOrder', [
+            'title'=>'Tembaga Studio - Detail Order',
+            'packets' => Packet::all(),
+            'order' => $orders->getIf($order_id)[0],
         ]);
     }
 
@@ -115,46 +131,47 @@ class AdminController extends Controller
     }
 
     public function editOrders($order_id)
-    {
-        $edit_order = Order::where('order_id', $order_id)->get();
-
+    {   
+        $order = new OrdersController();
+        // dd([$order_id, $order->getIf($order_id)]);
         return view('admin.editOrders', [
             "title" => "Edit Order",
-            'editOrders' => $edit_order,
-            "Paket" => Packet::pluck('name', 'packet_id'),
+            'editOrders' => $order->getIf($order_id), 
+            "packets" => Packet::all(),
         ]);
     }
 
     public function updateOrders(Request $request)
     {
         $messages = [
-            'required' => ':attribute wajib diisi ',
-            'min' => ':attribute harus diisi minimal :min karakter !!!',
-            'max' => ':attribute harus diisi maksimal :max karakter !!!',
-            'numeric' => ':attribute harus diisi angka !!!',
-            'email' => ':attribute harus diisi dalam bentuk email !!!',
-        ];
+            'required' => ':attribute harus diisi ',
+            'min' => ':attribute harus diisi minimal :min karakter',
+            'max' => ':attribute harus diisi maksimal :max karakter',
+            'numeric' => ':attribute harus diisi angka',
+            'email' => ':attribute harus dalam bentuk email, misal: example@example.com',
+        ]; 
 
         $this->validate($request,[
-            'name' => 'required|min:5|max:30',
-            'phone' => 'required|numeric',
-            'email' => 'required|email',
-            'time' => 'required',
+            'name' => 'required',
+            'phone' => 'required',
+            'email' => 'required|email:rfc,dns',
+            'tanggal' => 'required',
+            'waktu' => 'required',
             'packet_id' => 'required',
             'duration' => 'required|min:1',
             'status' => 'required',
-        ],$messages);
+        ],$messages);  
 
-        Order::where('order_id', $request->id)->update([
+        Order::where('order_id', $request->order_id)->update([
             'name' => $request->name,
             'phone' => $request->phone,
             'email' => $request->email,
-            'time' => $request->time,
+            'time' => date('Y-m-d H:i', strtotime($request->tanggal.$request->waktu)),
             'packet_id' => $request->packet_id,
             'duration' => $request->duration,
             'status' => $request->status,
-
         ]);
+
         return redirect('/orders')->with('info', 'Order has been changed');
     }
 

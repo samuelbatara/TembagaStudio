@@ -135,7 +135,7 @@ class PaymentController extends Controller
         $order->name = $data['name'];
         $order->phone = $data['phone'];
         $order->email = $data['email'];
-        $order->time = date('Y-m-d H:i:s', strtotime($data['tanggal'].$data['waktu']));
+        $order->time = date('Y-m-d H:i', strtotime($data['tanggal'].$data['waktu']));
         $order->packet_id = $data['paket'];
         $order->duration = $data['durasi'];
         $order->status = "Pending";

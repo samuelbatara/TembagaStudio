@@ -22,7 +22,7 @@
                                         @csrf
                                             <div class="row">
                                             <div class="col">
-                                            @if (count($errors) > 0)
+                                            {{-- @if (count($errors) > 0)
                                                 <div class="alert alert-danger">
                                                 <ul>
                                                     @foreach ($errors->all() as $error)
@@ -30,47 +30,82 @@
                                                     @endforeach
                                                 </ul>
                                             </div>
-                                            @endif
-                                            <input type="hidden" name="id"  value="{{ $p->order_id }}">
-                                                <div class="form-group">
-                                                    <label for="name">name</label>
-                                                    <input type="text" id="name" class="form-control"
-                                                        placeholder="name" name="name" value="{{ $p->name }}">
-                                                </div>
+                                            @endif --}}
+                                            <input type="hidden" name="order_id"  value="{{ $p->order_id }}">
                                             <div class="form-group">
-                                                <label for="phone">phone</label>
-                                                <input type="text" id="phone" class="form-control"
-                                                    placeholder="phone" name="phone" value="{{ $p->phone }}">
+                                                <label for="name">Nama</label>
+                                                <input type="text" id="name" class="form-control @error('name')
+                                                    is-invalid
+                                                @enderror" placeholder="name" name="name" value="{{ $p->name }}">
+                                                @error('name')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
+                                                </div> 
+                                            <div class="form-group">
+                                                <label for="phone">No. WhatsApp</label>
+                                                <input type="text" id="phone" class="form-control @error('phone')
+                                                    is-invalid
+                                                @enderror" placeholder="phone" name="phone" value="{{ $p->phone }}">
+
+                                                @error('phone')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                             <div class="form-group">
-                                                <label for="email">email</label>
-                                                <input type="text" id="email" class="form-control"
-                                                    placeholder="email" name="email" value="{{ $p->email }}">
+                                                <label for="email">Email</label>
+                                                <input type="text" id="email" class="form-control @error('email')
+                                                    is-invalid
+                                                @enderror" placeholder="email" name="email" value="{{ $p->email }}">
+                                                @error('email')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
 
-                                            <div class="form-group">
-                                                <label for="time">time</label>
-                                                <input type="text" id="time" class="form-control"
-                                                    name="time" placeholder="time" value="{{ $p->time }}">
+                                            <div class="row mx-auto">
+                                                <div class="form-group" style="margin-right: 20px">
+                                                    <label for="time">Tanggal Pemakaian</label>
+                                                    <input type="date" id="tanggal" class="form-control @error('tanggal')
+                                                        is-invalid
+                                                    @enderror" name="tanggal" value="{{ date('Y-m-d', strtotime($p->time)) }}">
+                                                    @error('tanggal')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+                                                
+                                                <div class="form-group" style="margin-right: 20px">
+                                                    <label for="time">Waktu Pemakaian</label>
+                                                    <input type="time" id="waktu" class="form-control @error('waktu')
+                                                        is-invalid
+                                                    @enderror" name="waktu" value="{{ date('H:i', strtotime($p->time)) }}">
+                                                    @error('waktu')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+
+
                                             </div>
+                                            
+
                                             <div class="form-group">
                                                 <label for="packet_id">Paket</label>
-                                                <select class="form-control" name="packet_id" id="packet_id" placeholder="packet_id" >
-                                                    @foreach ($Paket as $packet_id => $name)
-                                                        <option value="{{ $packet_id }}">{{ $name }}</option>
+                                                <select class="form-control" name="packet_id" id="packet_id" placeholder="packet_id" {{ (strcmp("Paid", $p->status)==0)? 'disabled':''; }}>
+                                                    @foreach ($packets as $item)
+                                                        <option value="{{ $item->packet_id }}">{{ $item->name }}</option>
                                                     @endforeach
                                                 </select>
-                                            </div>
+                                            </div> 
+                                            
                                             <div class="form-group">
                                                 <label for="duration">Durasi</label>
                                                 <input type="number" id="duration" class="form-control"
-                                                    name="duration" placeholder="duration" value="{{ $p->duration }}">
+                                                    name="duration" placeholder="duration" value="{{ $p->duration }}" min="1" {{ (strcmp('Paid', $p->status)==0)? 'disabled':''; }}>
                                             </div>
                                             <div class="form-group">
-                                                <label for="status">Status</label>
-                                                <select class="form-control" name="status" id="status">
-                                                        <option value="Paid">Paid</option>
-                                                        <option value="Unpaid">Unpaid</option>
+                                                <label for="status">Status</label>  
+                                                <select class="form-control" name="status" id="status" {{ (strcmp('Paid', $p->status)==0)? 'disabled':''; }}>
+                                                    <option value="Paid" {{ strcmp($p->status,'Paid')==0? 'selected':''; }}>Paid</option>
+                                                    <option value="Pending" {{ strcmp($p->status,'Pending')==0? 'selected':''; }}>Pending</option>
+                                                    <option value="Denied" {{ strcmp($p->status,'Denied')==0? 'selected':''; }}>Denied</option>
                                                 </select>
                                             </div>
                                                 <div class="col-12 d-flex justify-content-end">
