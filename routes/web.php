@@ -38,8 +38,10 @@ Route::group(['middleware'=>'revalidate'], function() {
         Route::post('/orders/update', [App\Http\Controllers\AdminController::class, 'updateOrders'])->name('admin.updateOrders');
         Route::get('/orders/{order_id}', [App\Http\Controllers\AdminController::class, 'infoOrder'])->name('admin.infoOrder'); 
         Route::get('/cancel/{order_id}', [App\Http\Controllers\AdminController::class, 'cancelOrder'])->name('admin.cancel');
-        
-        // Routes Order
+        Route::get('/status', [App\Http\Controllers\AdminController::class, 'ordersByStatus'])->name('admin.status');
+
+
+        // Routes Paket
         Route::get('/packets', [App\Http\Controllers\AdminController::class, 'packets'])->name('admin.packet');
         Route::get('/packets/addPackets', [App\Http\Controllers\AdminController::class, 'addPackets'])->name('admin.addPackets');
         Route::post('/packets/addPackets/sukses', [App\Http\Controllers\AdminController::class, 'storePackets'])->name('admin.storePackets');
@@ -47,6 +49,7 @@ Route::group(['middleware'=>'revalidate'], function() {
         Route::get('/packets/editPackets/{packet_id}', [App\Http\Controllers\AdminController::class, 'editPackets'])->name('admin.editPackets');
         Route::post('/packets/update', [App\Http\Controllers\AdminController::class, 'updatePackets'])->name('admin.updatePackets');
     });
+
 
     // Proses penyewaan
     Route::get('/sewa1', [\App\Http\Controllers\PaymentController::class, 'index']);

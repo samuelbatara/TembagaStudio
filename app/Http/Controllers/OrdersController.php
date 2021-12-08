@@ -29,4 +29,10 @@ class OrdersController extends Controller
         $order = DB::select("SELECT * FROM $this->table WHERE order_id='$order_id' LIMIT 1");
         return $order;
     }
+
+    public function getOrdersByStatus($status) {
+        $status = strtolower($status);
+        $orders = DB::select("SELECT * FROM $this->table WHERE status='$status' OR name like '%$status%'");
+        return $orders;
+    }
 }

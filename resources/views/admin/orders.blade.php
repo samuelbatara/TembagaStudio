@@ -7,7 +7,13 @@
     <h1 class="h2">Orders</h1> 
     <div class="btn-toolbar mb-2 mb-md-0">
       <div class="btn-group me-2">
-        {{-- <button type="button" class="btn btn-sm btn btn-outline-primary" onclick="location.href='/addOrders'">Tambah Orders</button> --}}
+        <!--Here is spot for put the button -->  
+        <form action="/status" method="get" class="row row-cols-lg-auto g-3 align-items-center">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" name="status" placeholder="Nama atau Status order" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <button class="btn btn-outline-secondary" name="submit" value="cari" type="submit" id="button-addon2">Cari</button>
+          </div>
+        </form>  
       </div>
     </div>
   </div>
@@ -40,36 +46,39 @@
   </div>
   @endif
 
-  <div class="table-responsive">
-    <table class="table table-striped table-sm">
-      <thead>
-        <tr>
-          <th scope="col">No</th>
-          <th scope="col">Nama</th>
-          <th scope="col">Nomor Tel.</th>
-          <th scope="col">Waktu Pemakaian</th>
-          <th scope="col">Paket</th>
-          <th scope="col">Status</th>
-          <th scope="col">Aksi</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php $no = 0; ?>
-        @foreach ($orders as $order) 
-        <tr>
-          <td>{{ ++$no; }}</td>
-          <td>{{ $order->name }}</td>
-          <td>{{ $order->phone }}</td>
-          <td>{{ $order->time }}</td>
-          <td>{{ $packets[$order->packet_id] }}</td>
-          <td style="font-weight: bold">{{ ucfirst($order->status)}}</td>
-          <td>
-            <a href="/orders/{{ $order->order_id }}" style="margin: 0 3px" class="btn btn-sm btn-outline-dark">Detail</a>
-          </td>
-        </tr>
-        @endforeach
-      </tbody>
-    </table>
+  <div id="taro">
+    <div class="table-responsive">
+      <table class="table table-striped table-sm">
+        <thead>
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">Nama</th>
+            <th scope="col">Nomor Tel.</th>
+            <th scope="col">Waktu Pemakaian</th>
+            <th scope="col">Paket</th>
+            <th scope="col">Status</th>
+            <th scope="col">Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php $no = 0; ?>
+          @foreach ($orders as $order) 
+          <tr>
+            <td>{{ ++$no; }}</td>
+            <td>{{ $order->name }}</td>
+            <td>{{ $order->phone }}</td>
+            <td>{{ $order->time }}</td>
+            <td>{{ $packets[$order->packet_id] }}</td>
+            <td style="font-weight: bold">{{ ucfirst($order->status)}}</td>
+            <td>
+              <a href="/orders/{{ $order->order_id }}" style="margin: 0 3px" class="btn btn-sm btn-outline-dark">Detail</a>
+            </td>
+          </tr>
+          @endforeach
+        </tbody>
+      </table>
+    </div>
   </div>
+  
 </main>
 @endsection

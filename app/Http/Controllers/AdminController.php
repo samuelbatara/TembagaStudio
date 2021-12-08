@@ -94,6 +94,19 @@ class AdminController extends Controller
         ]);
     }
 
+    public function ordersByStatus(Request $request) {
+        $packets = array();
+        foreach(Packet::all() as $item) {
+            $packets[$item->packet_id] = $item->name;
+        } 
+        $orders = new OrdersController(); 
+        return view('admin.orders',[
+            "title" => "Orders", 
+            "orders" => $orders->getOrdersByStatus($request->status),
+            "packets" => $packets,
+        ]);
+    }
+
     public function infoOrder($order_id) {
 
         $T = \Midtrans\Transaction::status($order_id);

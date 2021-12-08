@@ -112,7 +112,10 @@ class PaymentController extends Controller
             $isError = true;
             $errors['name'] = 'Nama harus terdiri dari spasi dan alfabet.'; 
             $errors['oldName'] = $name;
+        } else {
+            $errors['oldName'] = $name;
         }
+
         if($phone == '') {
             $isError = true;
             $errors['phone'] = 'No. WhatsApp harus diisi.';
@@ -120,24 +123,28 @@ class PaymentController extends Controller
             $isError = true;
             $errors['phone'] = 'No. WhatsApp harus numeric.'; 
             $errors['oldPhone'] = $phone;
+        } else {
+            $errors['oldPhone'] = $phone;
         }
+
         if($email == '') {
             $isError = true;
             $errors['email'] = 'Email harus diisi.';
         } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $isError = true;
             $errors['email'] = "Email tidak valid.";
             $errors['oldEmail'] = $email;
         }  else {
             $errors['oldEmail'] = $email;
         }
 
-        $_SESSION['order']['name'] = $name;
-        $_SESSION['order']['phone'] = $phone;
-        $_SESSION['order']['email'] = $request->email;
-
         if($isError) {
             return redirect()->back()->withErrors($errors);
         } 
+        
+        $_SESSION['order']['name'] = $name;
+        $_SESSION['order']['phone'] = $phone;
+        $_SESSION['order']['email'] = $email;
 
         $jlh_orang = $_SESSION['order']['jlh_orang'];
         $durasi = $_SESSION['order']['durasi'];
@@ -236,23 +243,24 @@ class PaymentController extends Controller
 
         // Transaksi akan diproses 
         if(strcmp($status_code, "200") == 0) { // Transaksi pembayaran
-            $data = [
-                "order_id" => $order_id,
-                "amount" => $notif->gross_amount,
-                "time" => $notif->transaction_time,
-                "status_code" => $status_code,
-            ]; 
-            $res = $this->insertToPayments($data);
-            if($res) {
-                \App\Models\Order::where('order_id', $order_id)->update([
-                    'status' => $notif->transaction_status,
-                ]);
+             
+            if($notif->transaction_status == 'settlement') {
+                $data = [
+                    "order_id" => $order_id,
+                    "amount" => $notif->gross_amount,
+                    "time" => $notif->transaction_time,
+                    "status_code" => $status_code,
+                ];
+                $this->insertToPayments($data);
             }
-        } else if(strcmp($status_code, "201") == 0) { // Transaksi pending 
+            \App\Models\Order::where('order_id', $order_id)->update([
+                'status' => ucfirst($notif->transaction_status),
+            ]);
+        } else if(strcmp($status_code, "201") == 0) { // Transaksi pending
             \App\Models\Order::where('order_id', $order_id)->update([
                 'status' => 'Pending',
             ]);
-        } else if(strcmp($status_code, "407") == 0) { // Transaksi expired 
+        } else if(strcmp($status_code, "407") == 0) { // Transaksi expired
             \App\Models\Order::where('order_id', $order_id)->update([
                 'status' => 'Expired',
             ]);

@@ -17,7 +17,7 @@
               <div class="form-group" style="margin-bottom: 20px">
                 <label for="nama" style="font-weight: bold">Nama</label>
                 <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Nama Anda" id="name" name="name" 
-                value="@error('oldName'){{ $message }} @enderror" required>
+                value="@error('oldName') {{ $message }} @enderror" required>
                 @error('name')
                   <div class="invalid-feedback">{{ $message }}</div>
                 @enderror

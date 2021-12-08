@@ -227,7 +227,7 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title" style="font-weight: bold;">History Pembayaran</h4>
-                    @if ($order->status !=  'settlement')
+                    @if ($order->status != 'Settlement')
                         <span style="font-style: italic; color: red;">Belum ada pembayaran</span>
                     @endif
                 </div>
@@ -243,7 +243,7 @@
                                 </tr>
                             </thead>
                             <tbody> 
-                                @if ($order->status == 'settlement')
+                                @if ($order->status == 'Settlement')
                                     <tr>
                                         <td>{{ date('Y-m-d H:i', strtotime($payment->time)) }}</td>
                                         <td>Rp. {{ $payment->amount }}</td>
