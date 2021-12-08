@@ -59,7 +59,7 @@
           <td>{{ $packet->price }}</td>
           <td>
           <a href="/packets/editPackets/{{$packet->packet_id}}" class="btn btn-sm btn-outline-dark">Edit</a>
-          <a href="/packets/hapus/{{$packet->packet_id}}" class="btn btn-sm btn-outline-danger">Delete</a>
+          {{-- <a href="/packets/hapus/{{$packet->packet_id}}" class="btn btn-sm btn-outline-danger">Delete</a> --}}
           </td>
         </tr>
         @endforeach
