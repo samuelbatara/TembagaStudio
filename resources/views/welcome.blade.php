@@ -38,12 +38,23 @@
     <div class="row d-flex">
       <div class="col-lg-6 text order-1 order-lg-1" style="align-content: flex-start">
         <h1 style="margin: 5% 0% 5% 0%; color: #C5AC58"><b>Tembaga Studio</b></h1>
-        <p style="color: #FFFFFF">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nulla porttitor massa id neque aliquam vestibulum morbi blandit. Senectus et netus et malesuada. Venenatis cras sed felis eget velit aliquet sagittis. Eu ultrices vitae auctor eu augue ut lectus arcu bibendum. 
-          Venenatis cras sed felis eget velit aliquet sagittis. </p>
+        <p style="color: #FFFFFF">Anda sedang mencari studio musik untuk latihan band? Atau ingin menyewa 
+          sound system dengan kualitas tinggi untuk suatu acara? Sudah menulis lagu, lalu ingin merekamnya 
+          secara professional untuk dipublikasikan? Tembaga Studio adalah tempat yang tepat untuk mewujudkan 
+          ketiganya. Kami melayani penyewaan studio, penyewaan sound system, dan jasa recording atau perekaman 
+          musik.</p>
           <br/>
           <div class="line col-lg-6" style="width: 546px; height: 1px; background-color:#C5AC58"></div>
           <br/>
-        <p style="margin: 0% 0% 10% 0%; color: #FFFFFF">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nulla porttitor massa id neque aliquam vestibulum morbi blandit. Senectus et netus et malesuada. Venenatis cras sed felis eget velit aliquet sagittis. Eu ultrices vitae auctor eu.</p>
+        <p style="margin: 0% 0% 10% 0%; color: #FFFFFF">Datang langsung ke studio kami di <b>Jalan Taman Candi Tembaga 
+          No.943, Kalipancur, Kec. Ngaliyan, Kota Semarang</b>. Scroll ke bawah untuk memesan paket sewa studio atau
+          <a href="https://api.whatsapp.com/send?phone=6285602577471" target="_blank" style="color: #C5AC58; text-decoration: none">hubungi kami</a>
+          untuk penyewaan sound system dan layanan jasa recording. Cek juga instagram kami di 
+          <a href="https://www.instagram.com/tembagamusic/" target="_blank" style="color: #C5AC58; text-decoration: none">@tembagamusic</a>
+          dan
+          <a href="https://www.instagram.com/tembagaaudio/" target="_blank" style="color: #C5AC58; text-decoration: none">@tembagaaudio</a>
+          untuk informasi lebih lanjut.
+        </p>
       </div>
       <div class="col-lg-6 order-2 order-lg-2">
         <div class="mapouter" style="align-content: center">
@@ -171,8 +182,8 @@
 
         </div>
         <div>
-          <a href="#" style="color: #C5AC58; font-weight: bold; text-decoration: none; font-size: 14pt; line-height: 3">Lihat Paket Sewa Sound System<br></a>
-          <a href="#" style="color: #C5AC58; font-weight: bold; text-decoration: none; font-size: 14pt; ">Lihat Paket Jasa Recording</a>
+          <a href="/layanan/#sound-system" style="color: #C5AC58; font-weight: bold; text-decoration: none; font-size: 14pt; line-height: 3">Lihat Paket Sewa Sound System<br></a>
+          <a href="/layanan/#jasa-recording" style="color: #C5AC58; font-weight: bold; text-decoration: none; font-size: 14pt; ">Lihat Paket Jasa Recording</a>
         </div>
       </div>
     </div>
@@ -203,7 +214,7 @@
           <br>
 
           <h5 style="color: #FFFFFF">Punya pertanyaan lain?
-          <a href="#" style="color: #C5AC58; font-weight: bold; text-decoration: none;">Hubungi kami</a>
+          <a href="https://api.whatsapp.com/send?phone=6285602577471" target="_blank" style="color: #C5AC58; font-weight: bold; text-decoration: none;">Hubungi kami</a>
           </h5>
 
         </div>
