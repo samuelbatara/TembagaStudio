@@ -55,7 +55,7 @@ class AdminController extends Controller
                     ->where('status', '=', 'settlement')
                     ->count();
         $cancel =  DB::table('orders')
-                ->where('status', '=', 'settlement')
+                ->where('status', '=', 'cancel')
                 ->count();
         // Return View Admin Dashboard dengan membuat variable panggilan untuk blade
         return view('admin.dashboard',[
