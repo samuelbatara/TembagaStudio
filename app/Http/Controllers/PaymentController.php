@@ -27,7 +27,7 @@ class PaymentController extends Controller
         date_default_timezone_set('Asia/Jakarta');
     }
     
-    public function index(Request $request) {
+    public function index(Request $request=null) {
         if(isset($request->paket)) {
             $_SESSION['order']['paket'] = $request->paket;
         }
@@ -36,7 +36,24 @@ class PaymentController extends Controller
         ]);
     }
 
-    public function formTanggalWaktu(Request $request) {   
+    public function formTanggalWaktu(Request $request) { 
+        $ok = true;
+        if(!isset($request->paket)) {
+            $ok = false;
+        }
+        if(!isset($request->jlh_orang)) {
+            $ok = false;
+        }
+        if(!isset($request->durasi)) {
+            $ok = false;
+        } 
+
+        if(!$ok) {
+            return view('sewa1', [
+                "packets" => \App\Models\Packet::all(),
+            ]);
+        }
+        
         $paket = $request->paket;
         $jlh_orang = $request->jlh_orang;
         $durasi = $request->durasi;
@@ -74,13 +91,30 @@ class PaymentController extends Controller
     }
 
     public function formIdentitas(Request $request) {
+        $ok = true;
+        if(!isset($request->tanggalsewa)) {
+            $ok = false;
+        }
+        if(!isset($request->waktusewa)) {
+            $ok = false;
+        }
+
+        if(!$ok) {
+            return view('sewa1', [
+                "packets" => \App\Models\Packet::all(),
+            ]);
+        }
+
         $_SESSION['order']['tanggal'] = date("Y-m-d", strtotime($request->tanggalsewa));
         $_SESSION['order']['waktu'] = $request->waktusewa;
         // $date = date_create($request->tanggalsewa.' '.$request->waktusewa);
         // dd(date_format($date, 'Y/m/d H:i:s'));
         $harga = \App\Models\Packet::firstWhere('packet_id', $_SESSION['order']['paket'])->price;
         $total = $harga * $_SESSION['order']['durasi'] + max(0, $_SESSION['order']['jlh_orang'] - 5)* PaymentController::CHARGE;
-        return view('sewa3', ['total' => $total,]);
+        return view('sewa3', [
+            'total' => $total,
+            'packet' => \App\Models\Packet::find($_SESSION['order']['paket']),
+        ]);
     }
 
     public function getOrderId($data) {

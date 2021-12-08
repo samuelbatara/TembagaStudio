@@ -12,7 +12,7 @@
       <div class="col-lg-6">
         <div style="background-color: white; border-radius: 20px">
           <div style="padding: 5% 10%">
-            <h5 class="text-center">Sewa Studio Paket</h5><h5 class="text-center" id="sumpaket"></h5>
+            <h5 class="text-center">Sewa Studio Paket {{ $packet->name }}</h5><h5 class="text-center" id="sumpaket"></h5>
             <form action="/konfirmasi" method="get">
               <div class="form-group" style="margin-bottom: 20px">
                 <label for="nama" style="font-weight: bold">Nama</label>
