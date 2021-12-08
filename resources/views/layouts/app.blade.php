@@ -8,7 +8,7 @@
         @include('/partials/navbar')
         @yield('content')
     </body>
-    <footer class="text-center" style="background-color: #14171A; color: #C4C4C4; height: 50px;">
+    <footer class="d-flex justify-content-center align-items-center" style="background-color: #14171A; color: #C4C4C4; height: 70px; border-top: 1px solid  #878787">
         <p style="padding-top: 10px">Copyright © Tembaga Studio 2021</p>
     </footer>
 </html> 

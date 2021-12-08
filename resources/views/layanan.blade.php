@@ -20,7 +20,7 @@
     <div class="container" style="padding: 2.5% 0 2.5% 0">
       <div class="row d-flex justify-content-center">
         <div class="col-lg-12 text order-1 order-lg-1 text-center">
-          <h3 class = "fw-bold" style="font-family: 'Roboto'; color: #C5AC58; margin:30px">Layanan Sewa Studio</h3>
+          <h3 class = "fw-bold" style="color: #C5AC58; margin:30px; font-size: 36pt;">Layanan Sewa Studio</h3>
           <div class="row row-cols-auto justify-content-around">
             <style>
               ul {
@@ -110,97 +110,101 @@
     </div>
   </div>
 
-  <div class="bg" style="background-image: url('/img/Studio4.png'); padding: 25px">
-  <div class="content">
-    <h3 class = "fw-bold text-center" style="font-family: 'Roboto'; color: #C5AC58; margin:30px;">Layanan Sewa Sound System</h3>
-    
-    <div class="row row-cols-2 justify-content-center" style="align-items: center;"> 
-      <div class="card col" style="background-color: #1A2229; color: #C4C4C4; width: 380px; border-radius: 30px; margin: 30px 60px 30px 60px">
-        <div class="card-body" style="margin: 20px 0 20px 0;">
-           <p class="fs-2" style="margin:0; color: white; font-weight: 500; text-align: center">Paket A</p>
-          <p style="font-size:22pt; margin: 0; color:#C5AC58; text-align: center">
-            <b>Rp<span style="font-size:44pt">850.000</span></b>
-          </p>
-          <a class="btn btn-lg d-grid gap-2" style="padding:3px 0 3px 0; background-color: #C5AC58; color: white; font-weight: bold;" href="#" role="button">Sewa</a>
-          <div class="text-start" >
-            <ul class="list-group">
-              <li style="color: white">Mixer 12 Ch Yamaha MG12XU</li>
-              <li style="margin-top:5px">Behringer Feedback Destroyer</li>
-              <li style="margin-top:5px">Mic Wireless Hardwell</li>
-              <li style="margin-top:5px">Out Yamaha DBR 12</li>
-            </ul>
+  <div class="bg" id="sound-system" style="background-image: url('/img/Studio4.png'); padding: 25px">
+    <div class="content">
+      <h3 class = "fw-bold text-center" style="color: #C5AC58; margin:30px; font-size: 36pt;">Layanan Sewa Sound System</h3>
+      
+      <div class="row row-cols-2 justify-content-center" style="align-items: center;"> 
+        <div class="card col" style="background-color: #1A2229; color: #C4C4C4; width: 380px; border-radius: 30px; margin: 30px 60px 30px 60px">
+          <div class="card-body" style="margin: 20px 0 20px 0;">
+            <p class="fs-2" style="margin:0; color: white; font-weight: 500; text-align: center">Paket A</p>
+            <p style="font-size:22pt; margin: 0; color:#C5AC58; text-align: center">
+              <b>Rp<span style="font-size:44pt">850.000</span></b>
+            </p>
+            {{-- <a class="btn btn-lg d-grid gap-2" style="padding:3px 0 3px 0; background-color: #C5AC58; color: white; font-weight: bold;" href="#" role="button">Sewa</a> --}}
+            <div class="text-start" >
+              <ul class="list-group">
+                <li style="color: white">Mixer 12 Ch Yamaha MG12XU</li>
+                <li style="margin-top:5px">Behringer Feedback Destroyer</li>
+                <li style="margin-top:5px">Mic Wireless Hardwell</li>
+                <li style="margin-top:5px">Out Yamaha DBR 12</li>
+              </ul>
+            </div>
           </div>
-        </div>
-      </div>  
-  
-      <div class="card col" style="background-color: #1A2229; color: #C4C4C4; width: 380px; border-radius: 30px; margin: 30px 60px 30px 60px">
-        <div class="card-body" style="margin: 20px 0 20px 0;">
-          <p class="fs-2" style="margin:0; color: white; font-weight: 500; text-align: center">Paket B</p>
-          <p style="font-size:22pt; margin: 0; color:#C5AC58; text-align: center">
-            <b>Rp<span style="font-size:44pt">1.500.000</span></b>
-          </p>
-          <a class="btn btn-lg d-grid gap-2" style="padding:3px 0 3px 0; background-color: #C5AC58; color: white; font-weight: bold;" href="#" role="button">Sewa</a>
-          <div class="text-start">
-            <ul class="list-group">
-              <li style="color: white">Mixer Digital 16 ch Presonus 16.0.2</li>
-              <li style="margin-top:5px">Behringer Feedback Destroyer</li>
-              <li style="margin-top:5px">Mic Wireless Hardwell</li>
-              <li style="margin-top:5px">Out Yamaha DBR 12</li>
-              <li style="margin-top:5px">Out SUB Yamaha DXS 18</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+        </div>  
     
-
-    <div class="row row-cols-2 justify-content-center">
-      <div class="card col" style="background-color: #1A2229; color: #C4C4C4; width: 380px; border-radius: 30px; margin: 30px 60px 30px 60px">
-        <div class="card-body" style="margin: 20px 0 20px 0;">
-          <p class="fs-2" style="margin:0; color: white; font-weight: 500; text-align: center">Paket C</p>
-          <p style="font-size:22pt; margin: 0; color:#C5AC58; text-align: center">
-            <b>Rp<span style="font-size:44pt">2.000.000</span></b>
-          </p>
-          <a class="btn btn-lg d-grid gap-2" style="padding:3px 0 3px 0; background-color: #C5AC58; color: white; font-weight: bold;" href="#" role="button">Sewa</a>
-          <div class="text-start">
-            <ul class="list-group">
-              <li style="color: white">Mixer Digital 16 ch Presonus 16.0.2</li>
-              <li style="margin-top:5px">Behringer Feedback Destroyer</li>
-              <li style="margin-top:5px">Mic Wireless Hardwell</li>
-              <li style="margin-top:5px">Out Yamaha DBR 12</li>
-            </ul>
+        <div class="card col" style="background-color: #1A2229; color: #C4C4C4; width: 380px; border-radius: 30px; margin: 30px 60px 30px 60px">
+          <div class="card-body" style="margin: 20px 0 20px 0;">
+            <p class="fs-2" style="margin:0; color: white; font-weight: 500; text-align: center">Paket B</p>
+            <p style="font-size:22pt; margin: 0; color:#C5AC58; text-align: center">
+              <b>Rp<span style="font-size:44pt">1.500.000</span></b>
+            </p>
+            {{-- <a class="btn btn-lg d-grid gap-2" style="padding:3px 0 3px 0; background-color: #C5AC58; color: white; font-weight: bold;" href="#" role="button">Sewa</a> --}}
+            <div class="text-start">
+              <ul class="list-group">
+                <li style="color: white">Mixer Digital 16 ch Presonus 16.0.2</li>
+                <li style="margin-top:5px">Behringer Feedback Destroyer</li>
+                <li style="margin-top:5px">Mic Wireless Hardwell</li>
+                <li style="margin-top:5px">Out Yamaha DBR 12</li>
+                <li style="margin-top:5px">Out SUB Yamaha DXS 18</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
       
-      <div class="card col" style="background-color: #1A2229; color: #C4C4C4; width: 380px; border-radius: 30px; margin: 30px 60px 30px 60px">
-        <div class="card-body" style="margin: 20px 0 20px 0;">
-          <p class="fs-2" style="margin:0; color: white; font-weight: 500; text-align: center">Paket D</p>
-          <p style="font-size:22pt; margin: 0; color:#C5AC58; text-align: center">
-            <b>Rp<span style="font-size:44pt">2.500.000</span></b>
-          </p>
-          <a class="btn btn-lg d-grid gap-2" style="padding:3px 0 3px 0; background-color: #C5AC58; color: white; font-weight: bold;" href="#" role="button">Sewa</a>
-          <div class="text-start">
-            <ul class="list-group">
-              <li style="color: white">Mixer Digital 16 ch Presonus 16.0.2</li>
-              <li style="margin-top:5px">Behringer Feedback Destroyer</li>
-              <li style="margin-top:5px">Mic Wireless Hardwell</li>
-              <li style="margin-top:5px">Out Yamaha DBR 12</li>
-              <li style="margin-top:5px">Out SUB Yamaha DXS 18</li>
-            </ul>
+
+      <div class="row row-cols-2 justify-content-center">
+        <div class="card col" style="background-color: #1A2229; color: #C4C4C4; width: 380px; border-radius: 30px; margin: 30px 60px 30px 60px">
+          <div class="card-body" style="margin: 20px 0 20px 0;">
+            <p class="fs-2" style="margin:0; color: white; font-weight: 500; text-align: center">Paket C</p>
+            <p style="font-size:22pt; margin: 0; color:#C5AC58; text-align: center">
+              <b>Rp<span style="font-size:44pt">2.000.000</span></b>
+            </p>
+            {{-- <a class="btn btn-lg d-grid gap-2" style="padding:3px 0 3px 0; background-color: #C5AC58; color: white; font-weight: bold;" href="#" role="button">Sewa</a> --}}
+            <div class="text-start">
+              <ul class="list-group">
+                <li style="color: white">Mixer Digital 16 ch Presonus 16.0.2</li>
+                <li style="margin-top:5px">Behringer Feedback Destroyer</li>
+                <li style="margin-top:5px">Mic Wireless Hardwell</li>
+                <li style="margin-top:5px">Out Yamaha DBR 12</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card col" style="background-color: #1A2229; color: #C4C4C4; width: 380px; border-radius: 30px; margin: 30px 60px 30px 60px">
+          <div class="card-body" style="margin: 20px 0 20px 0;">
+            <p class="fs-2" style="margin:0; color: white; font-weight: 500; text-align: center">Paket D</p>
+            <p style="font-size:22pt; margin: 0; color:#C5AC58; text-align: center">
+              <b>Rp<span style="font-size:44pt">2.500.000</span></b>
+            </p>
+            {{-- <a class="btn btn-lg d-grid gap-2" style="padding:3px 0 3px 0; background-color: #C5AC58; color: white; font-weight: bold;" href="#" role="button">Sewa</a> --}}
+            <div class="text-start">
+              <ul class="list-group">
+                <li style="color: white">Mixer Digital 16 ch Presonus 16.0.2</li>
+                <li style="margin-top:5px">Behringer Feedback Destroyer</li>
+                <li style="margin-top:5px">Mic Wireless Hardwell</li>
+                <li style="margin-top:5px">Out Yamaha DBR 12</li>
+                <li style="margin-top:5px">Out SUB Yamaha DXS 18</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
+
+      <div class="col-lg-12 text-center"">
+        <h5 class="text-center" style="color:white; margin:20px 0 0 0;">Ingin menyewa salah satu pake sound system? Bicarakan lebih lanjut dengan kami.</h5><br>
+        <a class="btn btn-lg" style="padding: 5px 40px; margin-bottom: 20px; background-color: #C5AC58; color: #FFFFFF; 
+        font-weight: bold;" href="https://api.whatsapp.com/send?phone=6285602577471" target="_blank">Hubungi Kami</a>
+      </div>
+      
     </div>
-
-    
-
-  </div>
   </div>
 
-  <div class="bg" style="background-color: #14171A; padding: 25px">
+  <div class="bg" id="jasa-recording" style="background-color: #14171A; padding: 25px">
     <div class="content" style="align-items: center; padding: 40px">
-        <h2 class="col-lg-12 text-center" style="color: #C5AC58; font-size: 65px; margin: 20px 20px 50px 0"><b>Layanan Jasa Recording</b></h2>
+        <h2 class="col-lg-12 text-center" style="color: #C5AC58; font-size: 42pt; margin: 20px 20px 50px 0"><b>Layanan Jasa Recording</b></h2>
         <table class="h-50" style="color: #F0F0F0; margin-left: auto; margin-right:auto; width: 50%">
             <tr>
                 <td>Sewa Studio Recording (6 jam)</td>
@@ -231,6 +235,11 @@
                 <td>Rp 3.750.000</td>
             </tr>
         </table>
+        <div class="col-lg-12 text-center"">
+          <h5 class="text-center" style="color:white; margin:40px 0 0 0;">Ingin merekam musikmu sendiri secara professional? Tanyakan lebih lanjut dengan kami.</h5><br>
+          <a class="btn btn-lg" style="padding: 5px 40px; margin-bottom: 20px; background-color: #C5AC58; color: #FFFFFF; 
+          font-weight: bold;" href="https://api.whatsapp.com/send?phone=6285602577471" target="_blank">Hubungi Kami</a>
+        </div>
     </div>
   </div>
   
