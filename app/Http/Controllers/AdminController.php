@@ -48,13 +48,15 @@ class AdminController extends Controller
         $corder = DB::table('orders')->count();
         // Menghitung Jumlah Orders dengan status Not Paid
         $pending =  DB::table('orders')
-                    ->where('status', '=', 'Pending')
+                    ->where('status', '=', 'pending')
                     ->count();
         // Menghitung Jumlah Orders dengan status Paid
-        $paid =  DB::table('orders')
-                    ->where('status', '=', 'Paid')
+        $settlement =  DB::table('orders')
+                    ->where('status', '=', 'settlement')
                     ->count();
-       
+        $cancel =  DB::table('orders')
+                ->where('status', '=', 'settlement')
+                ->count();
         // Return View Admin Dashboard dengan membuat variable panggilan untuk blade
         return view('admin.dashboard',[
             "title" => "Dashboard",
@@ -64,7 +66,8 @@ class AdminController extends Controller
             "sumpacket2" => $sum2,
             "countorder" => $corder,
             "pending" => $pending,
-            "paid" => $paid,
+            "settlement" => $settlement,
+            "cancel" => $cancel,
             "paket" => Packet::pluck('name', 'packet_id'),
         ]);
 

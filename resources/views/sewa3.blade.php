@@ -16,17 +16,29 @@
             <form action="/konfirmasi" method="get">
               <div class="form-group" style="margin-bottom: 20px">
                 <label for="nama" style="font-weight: bold">Nama</label>
-                <input type="text" class="form-control" placeholder="Nama Anda" id="name" name="name">
+                <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Nama Anda" id="name" name="name" 
+                value="@error('oldName'){{ $message }} @enderror" required>
+                @error('name')
+                  <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
               </div>
   
               <div class="form-group" style="margin-bottom: 20px">
                 <label for="WA" style="font-weight: bold">Nomor WhatsApp</label>
-                <input type="tel" class="form-control" placeholder="081234567890" id="phone" name="phone">
+                <input type="text" class="form-control @error('phone') is-invalid @enderror" placeholder="081234567890" id="phone" name="phone"
+                value="@error('oldPhone') {{ $message }} @enderror" required>
+                @error('phone')
+                  <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
               </div>
   
               <div class="form-group" style="margin-bottom: 20px">
                 <label for="email" style="font-weight: bold">Email</label>
-                <input type="email" class="form-control" placeholder="username@email.com"name="email" id="email">
+                <input type="text" class="form-control @error('email') is-invalid @enderror" placeholder="username@email.com" name="email" id="email"
+                 value="@error('oldEmail') {{ $message }} @enderror" required>
+                 @error('email')
+                  <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
               </div>
   
               <div class="d-flex justify-content-between align-items-center" style="padding: 10px 0;">

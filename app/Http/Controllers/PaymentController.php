@@ -36,7 +36,35 @@ class PaymentController extends Controller
         ]);
     }
 
-    public function formTanggalWaktu(Request $request) {
+    public function formTanggalWaktu(Request $request) {   
+        $paket = $request->paket;
+        $jlh_orang = $request->jlh_orang;
+        $durasi = $request->durasi;
+
+        $errors = [];  
+        $isValid = true;
+        if($paket == "none") {   
+            $isValid = false;
+            $errors['paket'] = 'Pilih salah satu paket.';
+            $errors['oldPaket'] = $paket;
+        }
+        if($jlh_orang == '') {
+            $isValid = false;
+            $errors['jlh_orang'] = 'Jumlah orang harus diisi.';
+        } else {
+            $errors['oldJlhOrang'] = $jlh_orang;
+        }
+        if($durasi == '') {
+            $isValid = false;
+            $errors['durasi'] = 'Durasi harus diisi';
+        } else {
+            $errors['oldDurasi'] = $durasi;
+        }
+        
+        if(!$isValid) {
+            return redirect()->back()->withErrors($errors);
+        }
+
         $_SESSION['order']['paket'] = $request->paket;
         $_SESSION['order']['jlh_orang'] = $request->jlh_orang;
         $_SESSION['order']['durasi'] = $request->durasi; 
@@ -60,10 +88,56 @@ class PaymentController extends Controller
         return $id; 
     }
 
+    public function isAnyNumber($data) {
+        $arr = str_split($data); 
+        foreach($arr as $b) {
+            if(is_numeric($b)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public function konfirmasi(Request $request) {
-        $_SESSION['order']['name'] = $request->name;
-        $_SESSION['order']['phone'] = $request->phone;
+        $name = trim($request->name);
+        $phone = trim($request->phone);
+        $email = trim($request->email);
+
+        $errors = [];
+        $isError = false;
+        if($name == '') {
+            $isError = true;
+            $errors['name'] = 'Nama harus diisi.';
+        } else if($this->isAnyNumber($name)) {
+            $isError = true;
+            $errors['name'] = 'Nama harus terdiri dari spasi dan alfabet.'; 
+            $errors['oldName'] = $name;
+        }
+        if($phone == '') {
+            $isError = true;
+            $errors['phone'] = 'No. WhatsApp harus diisi.';
+        } else if(!is_numeric($phone)) {
+            $isError = true;
+            $errors['phone'] = 'No. WhatsApp harus numeric.'; 
+            $errors['oldPhone'] = $phone;
+        }
+        if($email == '') {
+            $isError = true;
+            $errors['email'] = 'Email harus diisi.';
+        } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $errors['email'] = "Email tidak valid.";
+            $errors['oldEmail'] = $email;
+        }  else {
+            $errors['oldEmail'] = $email;
+        }
+
+        $_SESSION['order']['name'] = $name;
+        $_SESSION['order']['phone'] = $phone;
         $_SESSION['order']['email'] = $request->email;
+
+        if($isError) {
+            return redirect()->back()->withErrors($errors);
+        } 
 
         $jlh_orang = $_SESSION['order']['jlh_orang'];
         $durasi = $_SESSION['order']['durasi'];

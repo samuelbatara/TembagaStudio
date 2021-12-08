@@ -46,10 +46,10 @@
                     <h6>Apakah Anda yakin untuk menghapus order {{ $order->order_id }}?</h6>
                     </div>
                     <div class="modal-footer"> 
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
                         <form action="/cancel/{{ $order->order_id }}" method="GET">
                             <button type="submit" class="btn btn-danger">Ya</button>
-                        </form> 
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+                        </form>                         
                     </div>
                 </div>
                 </div>
@@ -222,7 +222,7 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title" style="font-weight: bold;">History Pembayaran</h4>
-                    @if ($order->status !=  'Paid')
+                    @if ($order->status !=  'settlement')
                         <span style="font-style: italic; color: red;">Belum ada pembayaran</span>
                     @endif
                 </div>
@@ -238,7 +238,7 @@
                                 </tr>
                             </thead>
                             <tbody> 
-                                @if ($order->status == 'Paid')
+                                @if ($order->status == 'settlement')
                                     <tr>
                                         <td>{{ date('Y-m-d H:i', strtotime($payment->time)) }}</td>
                                         <td>Rp. {{ $payment->amount }}</td>

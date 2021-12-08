@@ -16,12 +16,12 @@
             <form action="/sewa3" method="get">
               <div class="form-group" style="margin-bottom: 20px">
                 <label for="tanggalsewa" style="font-weight: bold">Tanggal</label>
-                <input type="date" class="form-control" name="tanggalsewa" id="tanggalsewa"> 
+                <input type="date" class="form-control" name="tanggalsewa" id="tanggalsewa" required>
               </div>
   
               <div class="form-group" style="margin-bottom: 20px">
                 <label for="waktusewa" style="font-weight: bold">Waktu</label>
-                <input type="time" class="form-control" name="waktusewa" id="waktusewa"> 
+                <input type="time" class="form-control" name="waktusewa" id="waktusewa" required> 
               </div>
   
               <div class="d-grid gap-2">

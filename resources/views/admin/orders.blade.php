@@ -7,7 +7,7 @@
     <h1 class="h2">Orders</h1> 
     <div class="btn-toolbar mb-2 mb-md-0">
       <div class="btn-group me-2">
-        <button type="button" class="btn btn-sm btn btn-outline-primary" onclick="location.href='/addOrders'">Tambah Orders</button>
+        {{-- <button type="button" class="btn btn-sm btn btn-outline-primary" onclick="location.href='/addOrders'">Tambah Orders</button> --}}
       </div>
     </div>
   </div>
@@ -64,7 +64,7 @@
           <td>{{ $packets[$order->packet_id] }}</td>
           <td style="font-weight: bold">{{ ucfirst($order->status)}}</td>
           <td>
-            <a href="/order/{{ $order->order_id }}" style="margin: 0 3px" class="btn btn-sm btn-outline-dark">Detail</a>
+            <a href="/orders/{{ $order->order_id }}" style="margin: 0 3px" class="btn btn-sm btn-outline-dark">Detail</a>
           </td>
         </tr>
         @endforeach

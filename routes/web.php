@@ -21,14 +21,7 @@ Route::get('/layanan', function () {
 //     return view('/sewa1');
 // }); 
 
-Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
-
-// Proses penyewaan
-Route::get('/sewa1', [\App\Http\Controllers\PaymentController::class, 'index']);
-Route::get('/sewa2', [\App\Http\Controllers\PaymentController::class, 'formTanggalWaktu']); 
-Route::get('/sewa3', [\App\Http\Controllers\PaymentController::class, 'formIdentitas']); 
-Route::get('/konfirmasi', [\App\Http\Controllers\PaymentController::class, 'konfirmasi']);
-   
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);   
 
 // Routes untuk Dashboard dan Orders pada Halaman Admin
 Route::group(['middleware'=>'revalidate'], function() {
@@ -43,7 +36,7 @@ Route::group(['middleware'=>'revalidate'], function() {
         Route::get('/orders/hapus/{order_id}', [App\Http\Controllers\AdminController::class, 'deleteOrders'])->name('admin.deleteOrders');
         Route::get('/orders/editOrders/{order_id}', [App\Http\Controllers\AdminController::class, 'editOrders'])->name('admin.editOrders');
         Route::post('/orders/update', [App\Http\Controllers\AdminController::class, 'updateOrders'])->name('admin.updateOrders');
-        Route::get('/order/{order_id}', [App\Http\Controllers\AdminController::class, 'infoOrder'])->name('admin.infoOrder'); 
+        Route::get('/orders/{order_id}', [App\Http\Controllers\AdminController::class, 'infoOrder'])->name('admin.infoOrder'); 
         Route::get('/cancel/{order_id}', [App\Http\Controllers\AdminController::class, 'cancelOrder'])->name('admin.cancel');
         
         // Routes Order
@@ -54,6 +47,12 @@ Route::group(['middleware'=>'revalidate'], function() {
         Route::get('/packets/editPackets/{packet_id}', [App\Http\Controllers\AdminController::class, 'editPackets'])->name('admin.editPackets');
         Route::post('/packets/update', [App\Http\Controllers\AdminController::class, 'updatePackets'])->name('admin.updatePackets');
     });
+
+    // Proses penyewaan
+    Route::get('/sewa1', [\App\Http\Controllers\PaymentController::class, 'index']);
+    Route::get('/sewa2', [\App\Http\Controllers\PaymentController::class, 'formTanggalWaktu']); 
+    Route::get('/sewa3', [\App\Http\Controllers\PaymentController::class, 'formIdentitas']); 
+    Route::get('/konfirmasi', [\App\Http\Controllers\PaymentController::class, 'konfirmasi']);
 
     // Login untuk admin
     Route::get('/login', [\App\Http\Controllers\LoginController::class, 'formLogin'])->name('login');
