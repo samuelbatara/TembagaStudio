@@ -27,7 +27,7 @@ class PaymentController extends Controller
         date_default_timezone_set('Asia/Jakarta');
     }
     
-    public function index(Request $request=null) {
+    public function index(Request $request) {
         if(isset($request->paket)) {
             $_SESSION['order']['paket'] = $request->paket;
         }
