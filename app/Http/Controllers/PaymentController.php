@@ -229,16 +229,17 @@ class PaymentController extends Controller
             'expiry' => $batas_pembayaran,
             'enabled_payments' => ['indomaret', 'alfamart'],
         );
-        $order = $_SESSION['order']; 
-        $res = $this->insertToOrders($order);
-        if(!$res) {
-            return redirect('sewa1')->with('exception', "Maaf, telah terjadi kesalahan. Silahkan coba lagi.");
-        }
+        
         try {
             $payment_url = \Midtrans\Snap::createTransaction($params)->redirect_url;
             header("Location: $payment_url"); 
         } catch(Exception $e) {
-            Order::find($order['order_id'])->delete();
+            // Order::where($order['order_id'])->delete();
+            return redirect('sewa1')->with('exception', "Maaf, telah terjadi kesalahan. Silahkan coba lagi.");
+        }
+        $order = $_SESSION['order']; 
+        $res = $this->insertToOrders($order);
+        if(!$res) {
             return redirect('sewa1')->with('exception', "Maaf, telah terjadi kesalahan. Silahkan coba lagi.");
         }
         unset($_SESSION['order']);
