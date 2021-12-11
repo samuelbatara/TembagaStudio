@@ -237,6 +237,7 @@ class PaymentController extends Controller
             // Order::where($order['order_id'])->delete();
             return redirect('sewa1')->with('exception', "Maaf, telah terjadi kesalahan. Silahkan coba lagi.");
         }
+        
         $order = $_SESSION['order']; 
         $res = $this->insertToOrders($order);
         if(!$res) {

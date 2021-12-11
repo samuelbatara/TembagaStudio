@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use \App\Http\Controllers\OrdersController;
 use App\Models\Payment;
+use Exception;
 
 use function PHPSTORM_META\map;
 
@@ -108,7 +109,6 @@ class AdminController extends Controller
     }
 
     public function infoOrder($order_id) {
-
         $T = \Midtrans\Transaction::status($order_id);
         $data = [];
         foreach($T as $key => $value) {
